@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, styled, Typography, Box, InputBase, Avatar, Menu, MenuItem, Button} from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 
 const StyledToolbar = styled(Toolbar)({
     display:"flex",
@@ -26,13 +27,19 @@ const NavBar = () => {
         <AppBar position='sticky'>
             <StyledToolbar>
                 <Typography variant='h6'>
-                    Go Move
+                    <Link to='/' >
+                        Go Move
+                    </Link>
                 </Typography>
                 <Search><InputBase placeholder='Search'></InputBase></Search>
                 <Icons>
                     {/* Тут прописать условие авторизации пользователя */}
-                    <Button variant="contained">Зарегистрироваться</Button>
-                    <Button variant="outlined" sx={{color: "white"}}>Войти</Button>
+                    <Button variant="contained">
+                        <Link to='/registration'>Register</Link>
+                    </Button>
+                    <Link to='/auth'>
+                        <Button variant="outlined" sx={{color: "white"}}>Войти</Button>
+                    </Link>
                     <Avatar sx={{width:35, height:35}} src='#'/>
                     <MenuIcon onClick={(e) => setOpen(true)} />
                 </Icons>

@@ -61,7 +61,7 @@ export default function Auth() {
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              label="Запомнить пароль"
             />
             <Button
               type="submit"
@@ -74,12 +74,13 @@ export default function Auth() {
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
-                  Forgot password?
+                  Забыли пароль?
                 </Link>
               </Grid>
               <Grid item>
+                <span>Нет учетной записи? </span>
                 <Link href="/registration" variant="body2">
-                  Нет учетной записи? Зарегистрируйся
+                  Зарегистрируйся
                 </Link>
               </Grid>
             </Grid>
