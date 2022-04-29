@@ -3,16 +3,16 @@ import React from 'react';
 import Home from './components/Home/Home';
 import NavBar from "./components/NavBar/NavBar";
 import Registration from './components/Registration/Registration';
-import Auth from './components/Auth/Auth';
+import Auth from './components/Login/Login';
+import MainGraph from './components/MainGraph/MainGraph';
 
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
-
       <NavBar />
       <Routes>
+        <Route path='/' element={<Home />} />
         <Route path='/auth' element={<Auth />} />
         <Route path='/registration' element={<Registration />} />
       </Routes>

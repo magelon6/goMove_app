@@ -36,7 +36,7 @@ export default function Auth() {
           }}
         >
           <Typography component="h1" variant="h5">
-            Авторизация
+            Sign-In
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -61,7 +61,7 @@ export default function Auth() {
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
-              label="Запомнить пароль"
+              label="Remember me"
             />
             <Button
               type="submit"
@@ -69,18 +69,18 @@ export default function Auth() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Войти
+              Sign-In
             </Button>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
-                  Забыли пароль?
+                  Forgot your password?
                 </Link>
               </Grid>
               <Grid item>
-                <span>Нет учетной записи? </span>
+                <span> </span>
                 <Link href="/registration" variant="body2">
-                  Зарегистрируйся
+                  Sign-Up
                 </Link>
               </Grid>
             </Grid>

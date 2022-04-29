@@ -1,14 +1,5 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import { Button, CssBaseline, TextField, Link, Grid, Box, Typography, Container } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme();
@@ -36,7 +27,7 @@ export default function Registration() {
           }}
         >
           <Typography component="h1" variant="h5">
-            Регистрация
+            Sign-Up
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -61,12 +52,6 @@ export default function Registration() {
                   autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
             </Grid>
             <Button
               type="submit"
@@ -74,13 +59,13 @@ export default function Registration() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Зарегистрироваться
+              Sign-Up
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-              <span>Уже есть аккаунт? </span>
+              <span>Already have an account? </span>
                 <Link href='/auth' variant="body2">
-                  Войти
+                  Sign-In
                 </Link>
               </Grid>
             </Grid>
