@@ -10,17 +10,21 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {useState, useContext} from "react";
 
 const theme = createTheme();
 
 export default function Auth() {
+
+ const [email, setEmail] = useState('');
+ const [password, setPassword] = useState('');
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+      setEmail(data.get('email'));
+      setPassword(data.get('password'));
   };
 
   return (

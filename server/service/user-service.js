@@ -18,10 +18,15 @@ class UserService {
       password: hash,
       activationLink,
     });
+    const userFront = {
+      id: newUser.id,
+      email: newUser.email,
+      isActivated: newUser.isActivated,
+    };
     await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
-    const tokens = await tokenService.generateTokens({ ...newUser });
+    const tokens = await tokenService.generateTokens({ ...userFront });
     await tokenService.saveToken(newUser, tokens.refreshToken);
-    return { ...tokens, user: newUser };
+    return { ...tokens, user: userFront };
   }
 
   async activate(activationLink) {
@@ -79,11 +84,14 @@ class UserService {
       throw ApiError.UnauthorizedError(401, 'Refresh token is required');
     }
     const userData = await tokenService.validateRefreshToken(refreshToken);
+    console.log('+++++++++++', userData);
+
     const tokenFromDb = await tokenService.findToken(refreshToken);
     if (!userData || !tokenFromDb) {
-      throw ApiError.UnauthorizedError(401, 'Rennew token required');
+      throw ApiError.UnauthorizedError(401, 'Renew token required');
     }
-    const userId = userData.dataValues.id;
+    const userId = userData.id;
+    console.log(userId);
     const user = await User.findOne({ where: { id: userId } });
     const userFront = {
       id: user.id,
