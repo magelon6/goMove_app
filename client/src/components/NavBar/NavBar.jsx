@@ -27,18 +27,18 @@ const NavBar = () => {
         <AppBar position='sticky'>
             <StyledToolbar>
                 <Typography variant='h6'>
-                    <Link to='/' >
+                    <Link to='/' style={{ textDecoration: 'none', color: 'white'}} >
                         Go Move
                     </Link>
                 </Typography>
                 <Search><InputBase placeholder='Search'></InputBase></Search>
                 <Icons>
                     {/* Тут прописать условие авторизации пользователя */}
-                    <Button variant="contained">
-                        <Link to='/registration'>Register</Link>
-                    </Button>
-                    <Link to='/auth'>
-                        <Button variant="outlined" sx={{color: "white"}}>Войти</Button>
+                    <Link to='/registration' style={{ textDecoration: 'none', background: '#FFB703' }}>
+                        <Button variant="outlined" sx={{color: 'white'}}>Sign Up</Button>
+                    </Link>
+                    <Link to='/auth' style={{ textDecoration: 'none' }}>
+                        <Button variant="outlined" sx={{color: "white"}}>Sign In</Button>
                     </Link>
                     <Avatar sx={{width:35, height:35}} src='#'/>
                     <MenuIcon onClick={(e) => setOpen(true)} />
