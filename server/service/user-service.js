@@ -26,6 +26,11 @@ class UserService {
 
   async activate(activationLink) {
     const user = await User.findOne({ where: { activationLink } });
+    const userFront = {
+      id: user.id,
+      email: user.email,
+      isActivated: user.isActivated,
+    };
     if (!user) {
       throw ApiError.badRequestError('User not found');
     }
@@ -34,13 +39,21 @@ class UserService {
     }
     user.isActivated = true;
     await user.save();
-    const tokens = await tokenService.generateTokens({ ...user });
+    const tokens = await tokenService.generateTokens({ ...userFront });
     await tokenService.saveToken(user, tokens.refreshToken);
-    return { ...tokens, user };
+    return { ...tokens, userFront };
   }
 
   async login(email, password) {
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({ where: { email }});
+    const userFront = {
+      id: user.id,
+      email: user.email,
+      isActivated: user.isActivated,
+    };
+
+    console.log('=========', user.email);
+    console.log('=========', user.password);
     if (!user) {
       throw ApiError.badRequestError('User not found');
     }
@@ -51,9 +64,9 @@ class UserService {
     if (!isValid) {
       throw ApiError.badRequestError('Invalid password');
     }
-    const tokens = await tokenService.generateTokens({ ...user });
+    const tokens = await tokenService.generateTokens({ ...userFront });
     await tokenService.saveToken(user, tokens.refreshToken);
-    return { ...tokens, user };
+    return { ...tokens, userFront };
   }
 
   async logout(refreshToken) {
@@ -72,9 +85,14 @@ class UserService {
     }
     const userId = userData.dataValues.id;
     const user = await User.findOne({ where: { id: userId } });
-    const tokens = await tokenService.generateTokens({ ...user });
+    const userFront = {
+      id: user.id,
+      email: user.email,
+      isActivated: user.isActivated,
+    };
+    const tokens = await tokenService.generateTokens({ ...userFront });
     await tokenService.saveToken(user, tokens.refreshToken);
-    return { ...tokens, user };
+    return { ...tokens, userFront };
   }
 
   async getUsers() {
