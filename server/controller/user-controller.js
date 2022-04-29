@@ -51,7 +51,7 @@ class UserController {
         try {
             const activationLink = req.params.link;
             await userService.activate(activationLink);
-            return res.redirect('localhost:3000/');
+            return res.redirect('http://localhost:3000/');
         } catch (err) {
             next(err);
         }
