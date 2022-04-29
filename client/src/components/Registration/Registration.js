@@ -78,8 +78,9 @@ export default function Registration() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
+              <span>Уже есть аккаунт? </span>
                 <Link href='/auth' variant="body2">
-                  Уже есть аккаунт? Войти
+                  Войти
                 </Link>
               </Grid>
             </Grid>
