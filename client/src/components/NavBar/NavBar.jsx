@@ -51,6 +51,9 @@ const NavBar = () => {
                 horizontal: 'right',
                 }}
             >
+
+
+            
                 <MenuItem >Profile</MenuItem>
                 <MenuItem >My account</MenuItem>
                 <MenuItem >Logout</MenuItem>
