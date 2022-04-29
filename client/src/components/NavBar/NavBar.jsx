@@ -1,134 +1,62 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import Button from '@mui/material/Button';
-import Grow from '@mui/material/Grow';
-import Paper from '@mui/material/Paper';
-import Popper from '@mui/material/Popper';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-import MenuList from '@mui/material/MenuList';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
+import React, { useState } from 'react';
+import { AppBar, Toolbar, styled, Typography, Box, InputBase, Avatar, Menu, MenuItem, Button} from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu';
 
-export default function NavBar() {
+const StyledToolbar = styled(Toolbar)({
+    display:"flex",
+    justifyContent:"space-between"
+})
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+const Search = styled("div")(({ theme }) => ({
+    backgroundColor: "white",
+    padding: "0 10px",
+    borderRadius: theme.shape.borderRadius,
+    width: "15%",
+}));
 
+const Icons = styled(Box)(({ theme }) => ({
+    display: "flex",
+    gap: "20px"
+}));
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+const NavBar = () => {
+    const [open, setOpen] = useState(false)
 
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
-
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  function handleListKeyDown(event) {
-    if (event.key === 'Tab') {
-      event.preventDefault();
-      setOpen(false);
-    } else if (event.key === 'Escape') {
-      setOpen(false);
-    }
-  }
-
-  return (
-    <Box sx={{ flexGrow: 1 }}>
-      
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Some Logo
-          </Typography>
-          
-            <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                
-                
-              >
-
-              </Menu>
-            </div>
-        
-              <Button
-                ref={anchorRef}
-                id="composition-button"
-                aria-controls={open ? 'composition-menu' : undefined}
-                aria-expanded={open ? 'true' : undefined}
-                aria-haspopup="true"
-                onClick={handleToggle}
-                style= {{color: "white"}}
-                >
-                *dropdown icon*
-                </Button>
-                <Popper
+    return (
+        <AppBar position='sticky'>
+            <StyledToolbar>
+                <Typography variant='h6'>
+                    Go Move
+                </Typography>
+                <Search><InputBase placeholder='Search'></InputBase></Search>
+                <Icons>
+                    {/* Тут прописать условие авторизации пользователя */}
+                    <Button variant="contained">Зарегистрироваться</Button>
+                    <Button variant="outlined" sx={{color: "white"}}>Войти</Button>
+                    <Avatar sx={{width:35, height:35}} src='#'/>
+                    <MenuIcon onClick={(e) => setOpen(true)} />
+                </Icons>
+            </StyledToolbar>
+            <Menu
+                id="demo-positioned-menu"
+                aria-labelledby="demo-positioned-button"
                 open={open}
-                anchorEl={anchorRef.current}
-                role={undefined}
-                placement="bottom-start"
-                transition
-                disablePortal
-                >
-                {({ TransitionProps, placement }) => (
-                    <Grow
-                    {...TransitionProps}
-                    style={{
-                        transformOrigin:
-                        placement === 'bottom-start' ? 'left top' : 'left bottom',
-                    }}
-                    >
-                    <Paper>
-                        <ClickAwayListener onClickAway={handleClose}>
-                        <MenuList
-                            autoFocusItem={open}
-                            id="composition-menu"
-                            aria-labelledby="composition-button"
-                            onKeyDown={handleListKeyDown}
-                        >
-                            <MenuItem onClick={handleClose}>Profile</MenuItem>
-                            <MenuItem onClick={handleClose}>My account</MenuItem>
-                            <MenuItem onClick={handleClose}>Logout</MenuItem>
-                        </MenuList>
-                        </ClickAwayListener>
-                    </Paper>
-                    </Grow>
-                )}
-                </Popper>
-        </Toolbar>
-      </AppBar>
-    </Box>
-  );
+                onClose={(e) => setOpen(false)}
+                anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+                }}
+                transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+                }}
+            >
+                <MenuItem >Profile</MenuItem>
+                <MenuItem >My account</MenuItem>
+                <MenuItem >Logout</MenuItem>
+            </Menu>
+        </AppBar>
+    )
 }
 
+export default NavBar
