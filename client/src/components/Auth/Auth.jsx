@@ -20,7 +20,7 @@ export default function Auth() {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const user = useSelector(state => state);
+    const user = useSelector(state => state.user);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -89,7 +89,7 @@ export default function Auth() {
                             </Grid>
                             <Grid item>
                                 <span>Нет учетной записи? </span>
-                                <Link href="/registration" variant="body2">
+                                <Link href="/auth" variant="body2">
                                     Зарегистрируйся
                                 </Link>
                             </Grid>
