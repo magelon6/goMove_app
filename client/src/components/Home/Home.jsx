@@ -1,59 +1,51 @@
+//import { Input } from '@mui/material'
 import React from 'react'
-import { Grid } from '@mui/material'
-import MainGraph from '../MainGraph/MainGraph'
-import StaticGraph from '../StaticGraph/StaticGraph'
-// import { useEffect } from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { getCityFromDB } from '../../redux/actions/thunk/thunkCity'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCityFromDB } from '../../redux/actions/thunk/thunkCity'
+
+import InputCenter from '../InputCenter/InputCenter'
 
 function Home() {
 
-  // временно закоменчено
-
-//   const city = useSelector((state) => state.city)
+  const price = useSelector((state) => state.price)
 
 
-//   const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   
+useEffect(() => {
+  dispatch(getCityFromDB())
+},[])
+
 // useEffect(() => {
-//   dispatch(getCityFromDB())
-// })
+//   dispatch(getPriceFromDB())
+// }, [])
 
 
 
-
-//   return (
-//    <>
-//    {city && city.map((el)=>
-//    <div>
-
-//    <p> {el.city}</p>
-//    <p> {el.city_id}</p>
-//    </div>
+  return (
+   <>
+<center >
 
 
-//    )}
-//    </>
-//   )
-  return ( 
-    <div style={{margin: 30}}>
-      <Grid container>
-        <Grid item xs={12} sm={6} md={3}>
-            <StaticGraph />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-            <StaticGraph />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-            <StaticGraph />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-            <StaticGraph />
-        </Grid>
-      </Grid>
-      <MainGraph />
-    </div>
+
+<InputCenter/>
+
+   
+   {price && price.map((el)=>
+   <div key={el.id} style={{border: '2px solid black'}}>
+
+   <p> {el.name}</p>
+   <p> {el.price}</p>
+
+  
+   </div>
+)}
+</center>
+
+
+   </>
   )
 }
 
