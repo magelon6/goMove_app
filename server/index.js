@@ -11,7 +11,10 @@ const errorMiddleware = require('./middleware/error.middleware');
 
 // Middleware
 app.use(morgan('dev'));
-app.use(cors());
+app.use(cors({
+    origin: true,
+    credentials: true,
+}));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -20,13 +23,13 @@ app.use(errorMiddleware);
 
 // Start server
 const start = async () => {
-  try {
-    app.listen(PORT, () => {
-      console.log(`Server started on port = ${PORT}`);
-    });
-  } catch (e) {
-    console.log(e);
-  }
+    try {
+        app.listen(PORT, () => {
+            console.log(`Server started on port = ${PORT}`);
+        });
+    } catch (e) {
+        console.log(e);
+    }
 };
 start();
 
