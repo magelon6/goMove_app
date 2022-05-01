@@ -3,7 +3,7 @@ import {useState} from 'react';
 import {Box, Button, Container, CssBaseline, Grid, Link, TextField, Typography} from '@mui/material'
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {useDispatch, useSelector} from "react-redux";
-import {THUNK_ACTION_REGISTER} from "../../redux/actions/thunk/thunkRegistration";
+import {THUNK_ACTION_REGISTER} from "../../redux/thunk/thunkRegistration";
 
 const theme = createTheme();
 

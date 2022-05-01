@@ -1,5 +1,5 @@
-import AuthService from "../../../services/AuthService";
-import {getUser} from "../userActions";
+import AuthService from "../../services/AuthService";
+import {getUser} from "../actions/userActions";
 
 export const THUNK_ACTION_LOGIN = (userData) => async (dispatch) => {
     try {

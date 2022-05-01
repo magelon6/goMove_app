@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {useDispatch, useSelector} from "react-redux";
-import {THUNK_ACTION_LOGIN} from "../../redux/actions/thunk/thunkAuth";
+import {THUNK_ACTION_LOGIN} from "../../redux/thunk/thunkAuth";
 
 const theme = createTheme();
 
