@@ -6,7 +6,7 @@ const tokenService = require('./token-service');
 const ApiError = require('../exceptions/api-errors');
 
 class UserService {
-    async registration(email, password) {
+    async registration(name, email, password) {
         const user = await User.findOne({where: {email}});
         if (user) {
             throw ApiError.badRequestError('User already exists');
@@ -14,12 +14,14 @@ class UserService {
         const hash = await bcrypt.hash(password, 7);
         const activationLink = uuid.v4();
         const newUser = await User.create({
+            name,
             email,
             password: hash,
             activationLink,
         });
         const userFront = {
             id: newUser.id,
+            name: newUser.name,
             email: newUser.email,
             isActivated: newUser.isActivated,
         };

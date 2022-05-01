@@ -9,13 +9,14 @@ const theme = createTheme();
 
 export default function Registration() {
     const dispatch = useDispatch();
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const user = useSelector(state => state);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(THUNK_ACTION_REGISTER({email, password}));
+        dispatch(THUNK_ACTION_REGISTER({name, email, password}));
         console.log(user)
     }
 
@@ -33,10 +34,22 @@ export default function Registration() {
                     }}
                 >
                     <Typography component="h1" variant="h5">
-                        Sign-Up
+                        Registration
                     </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 3}}>
                         <Grid container spacing={2}>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    fullWidth
+                                    id="name"
+                                    label="User Name"
+                                    name="name"
+                                    autoComplete="name"
+                                    onChange={(e) => setName(e.target.value)}
+                                    value={name}
+                                />
+                            </Grid>
                             <Grid item xs={12}>
                                 <TextField
                                     required

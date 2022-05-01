@@ -2,8 +2,8 @@ import $api from "../http";
 
 export default class AuthService {
     static async registration(userData) {
-        const {email, password} = userData;
-        const response = await $api.post("/registration", {email, password});
+        const {name, email, password} = userData;
+        const response = await $api.post("/registration", {name, email, password});
         localStorage.setItem("token", response.data.accessToken);
         return response;
     }
