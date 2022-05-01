@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppBar, Toolbar, styled, Typography, Box, InputBase, Avatar, Menu, MenuItem, Button} from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const StyledToolbar = styled(Toolbar)({
     display:"flex",
@@ -22,6 +23,22 @@ const Icons = styled(Box)(({ theme }) => ({
 
 const NavBar = () => {
     const [open, setOpen] = useState(false)
+    const [findCity, setFindCity] = useState("")
+    const [copy, setCopy] = useState([])
+
+    const dispatch = useDispatch()
+
+
+    useEffect(()=> {
+      setCopy(findCity)  // create  new copy 
+    }, [findCity])
+
+    const submitHandler = (e) => {
+    e.preventDefault()
+    
+    dispatch()
+
+    }
 
     return (
         <AppBar position='sticky'>
@@ -31,7 +48,11 @@ const NavBar = () => {
                         Go Move
                     </Link>
                 </Typography>
-                <Search><InputBase placeholder='Search'></InputBase></Search>
+                <form onSubmit={(e) => submitHandler(e.target.value )}>
+
+                <Search><InputBase placeholder='Search' value={findCity}></InputBase></Search>
+                <button type='submit'> найти</button>
+                </form>
                 <Icons>
                     {/* Тут прописать условие авторизации пользователя */}
                     <Button variant="contained">
