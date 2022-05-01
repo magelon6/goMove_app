@@ -1,5 +1,5 @@
 
-![Logo](https://1drv.ms/u/s!AgYopXTxjz9B1EFgn864gRcDY-4p?e=M2mPdi)
+![Logo](https://ibb.co/pLQ6yX4)
 
 # GoMove
 
