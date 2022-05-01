@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { AppBar, Toolbar, styled, Typography, Box, InputBase, Avatar, Menu, MenuItem, Button} from '@mui/material'
+import React, {useEffect, useState } from 'react';
+import { AppBar, Avatar, Box, Button, InputBase, Menu, MenuItem, styled, Toolbar, Typography} from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 const StyledToolbar = styled(Toolbar)({
@@ -30,12 +30,12 @@ const NavBar = () => {
 
 
     useEffect(()=> {
-      setCopy(findCity)  // create  new copy 
+      setCopy(findCity)  // create  new copy
     }, [findCity])
 
     const submitHandler = (e) => {
     e.preventDefault()
-    
+
     dispatch()
 
     }
