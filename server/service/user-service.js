@@ -56,12 +56,10 @@ class UserService {
         const user = await User.findOne({where: {email}});
         const userFront = {
             id: user.id,
+            name: user.name,
             email: user.email,
             isActivated: user.isActivated,
         };
-
-        console.log('=========', user.email);
-        console.log('=========', user.password);
         if (!user) {
             throw ApiError.badRequestError('User not found');
         }
