@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { AppBar, Toolbar, styled, Typography, Box, InputBase, Avatar, Menu, MenuItem, Button} from '@mui/material'
+import React, {useState} from 'react';
+import {AppBar, Avatar, Box, Button, InputBase, Menu, MenuItem, styled, Toolbar, Typography} from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const StyledToolbar = styled(Toolbar)({
-    display:"flex",
-    justifyContent:"space-between"
+    display: "flex",
+    justifyContent: "space-between"
 })
 
-const Search = styled("div")(({ theme }) => ({
+const Search = styled("div")(({theme}) => ({
     backgroundColor: "white",
     padding: "0 10px",
     borderRadius: theme.shape.borderRadius,
     width: "15%",
 }));
 
-const Icons = styled(Box)(({ theme }) => ({
+const Icons = styled(Box)(({theme}) => ({
     display: "flex",
     gap: "20px"
 }));
@@ -27,21 +27,21 @@ const NavBar = () => {
         <AppBar position='sticky'>
             <StyledToolbar>
                 <Typography variant='h6'>
-                    <Link to='/' style={{ textDecoration: 'none', color: 'white'}} >
+                    <Link to='/' style={{textDecoration: 'none', color: 'white'}}>
                         Go Move
                     </Link>
                 </Typography>
                 <Search><InputBase placeholder='Search'></InputBase></Search>
                 <Icons>
                     {/* Тут прописать условие авторизации пользователя */}
-                    <Link to='/registration' style={{ textDecoration: 'none', background: '#FFB703' }}>
+                    <Link to='/registration' style={{textDecoration: 'none', background: '#FFB703'}}>
                         <Button variant="outlined" sx={{color: 'white'}}>Sign Up</Button>
                     </Link>
-                    <Link to='/auth' style={{ textDecoration: 'none' }}>
-                        <Button variant="outlined" sx={{color: "white"}}>Sign In</Button>
+                    <Link to='/auth' style={{textDecoration: 'none'}}>
+                        <Button variant="outlined" sx={{color: "white"}}>Login</Button>
                     </Link>
-                    <Avatar sx={{width:35, height:35}} src='#'/>
-                    <MenuIcon onClick={(e) => setOpen(true)} />
+                    <Avatar sx={{width: 35, height: 35}} src='#'/>
+                    <MenuIcon onClick={(e) => setOpen(true)}/>
                 </Icons>
             </StyledToolbar>
             <Menu
@@ -50,17 +50,17 @@ const NavBar = () => {
                 open={open}
                 onClose={(e) => setOpen(false)}
                 anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                    vertical: 'top',
+                    horizontal: 'right',
                 }}
                 transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                    vertical: 'top',
+                    horizontal: 'right',
                 }}
             >
-                <MenuItem >Profile</MenuItem>
-                <MenuItem >My account</MenuItem>
-                <MenuItem >Logout</MenuItem>
+                <MenuItem>Profile</MenuItem>
+                <MenuItem>My account</MenuItem>
+                <MenuItem>Logout</MenuItem>
             </Menu>
         </AppBar>
     )

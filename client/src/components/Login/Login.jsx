@@ -16,7 +16,7 @@ import {THUNK_ACTION_LOGIN} from "../../redux/actions/thunk/thunkAuth";
 
 const theme = createTheme();
 
-export default function Auth() {
+function Login() {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -27,7 +27,6 @@ export default function Auth() {
         dispatch(THUNK_ACTION_LOGIN({email, password}));
         console.log(user)
     }
-
 
     return (
         <ThemeProvider theme={theme}>
@@ -42,7 +41,7 @@ export default function Auth() {
                     }}
                 >
                     <Typography component="h1" variant="h5">
-                        Авторизация
+                        Login
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
                         <TextField
@@ -71,7 +70,7 @@ export default function Auth() {
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary"/>}
-                            label="Запомнить пароль"
+                            label="Remember me"
                         />
                         <Button
                             type="submit"
@@ -79,18 +78,18 @@ export default function Auth() {
                             variant="contained"
                             sx={{mt: 3, mb: 2}}
                         >
-                            Войти
+                            Login
                         </Button>
                         <Grid container>
                             <Grid item xs>
                                 <Link href="#" variant="body2">
-                                    Забыли пароль?
+                                    Forgot your password?
                                 </Link>
                             </Grid>
                             <Grid item>
-                                <span>Нет учетной записи? </span>
-                                <Link href="/auth" variant="body2">
-                                    Зарегистрируйся
+                                <span>Not registered yet? </span>
+                                <Link href="/registration" variant="body2">
+                                    Sign-Up
                                 </Link>
                             </Grid>
                         </Grid>
@@ -100,3 +99,5 @@ export default function Auth() {
         </ThemeProvider>
     );
 }
+
+export default Login;
