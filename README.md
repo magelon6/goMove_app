@@ -70,3 +70,13 @@ Takes two numbers and returns the sum.
 If you have any feedback, please reach out to us at a@artka.dev
 
 
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+
