@@ -2,6 +2,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Box, Button, Container, CssBaseline, Grid, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import './UserProfile.css'
 
 const theme = createTheme();
 
@@ -31,7 +32,7 @@ function UserProfile() {
   }
 
   return ( 
-              <ThemeProvider theme={theme}>
+          <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline/>
                 <Box
@@ -42,6 +43,12 @@ function UserProfile() {
                         alignItems: 'center',
                     }}
         >
+             <Typography component="h1" variant="h5">
+                        My Profile
+            </Typography>
+          <div className='UserProfile__container'>
+
+         
                       <div className="container col-md-4 mb-3 my-3">
                               <div className="card">
                                 <div className="d-flex flex-column align-items-center text-center my-3">
@@ -62,13 +69,9 @@ function UserProfile() {
                                 </div>
                               </div>
                             </div>
-
-                    <Typography component="h1" variant="h5">
-                        My Profile
-                    </Typography>
                     <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 3}}>
                         <Grid container spacing={2}>
-                            <Grid item xs={12}>
+                            <Grid item xs={8}>
                                 <TextField
                                     required
                                     fullWidth
@@ -80,7 +83,7 @@ function UserProfile() {
                                     value={name}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item xs={8}>
                                 <TextField
                                     required
                                     fullWidth
@@ -92,7 +95,7 @@ function UserProfile() {
                                     value={email}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
+                            <Grid item xs={8}>
                                 <TextField
                                     required
                                     fullWidth
@@ -108,13 +111,14 @@ function UserProfile() {
                         </Grid>
                         <Button
                             type="submit"
-                            fullWidth
+                            //fullWidth
                             variant="contained"
                             sx={{mt: 3, mb: 2}}
                         >
                             Edit
                         </Button>
-                    </Box>
+                   </Box>
+            </div>
                 </Box>
             </Container>
         </ThemeProvider>
