@@ -52,7 +52,7 @@ const NavBar = () => {
                 </Typography>
                 <form onSubmit={(e) => submitHandler(e.target.value )}>
 
-                <Search>
+<Search>
                     <InputBase placeholder='Search' value={findCity}></InputBase>
                 </Search>
                 <button type='submit'> найти</button>
