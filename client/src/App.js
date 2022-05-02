@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Registration from './components/Registration/Registration';
 import Login from "./components/Login/Login";
 import {THUNK_checkAuth} from "./redux/thunk/thunkAuth";
+import UserProfile from './components/UserProfile/UserProfile';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home/>}/>
                 <Route path='/auth' element={<Login/>}/>
+                <Route path='/profile' element={<UserProfile/>}/>
                 <Route path='/registration' element={<Registration/>}/>
             </Routes>
         </div>
