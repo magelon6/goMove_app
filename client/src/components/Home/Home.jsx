@@ -13,7 +13,6 @@ function Home() {
         dispatch(getCityFromDB())
     }, [])
 
-
     return (
         <div style={{margin: 30}}>
             <Grid container>
