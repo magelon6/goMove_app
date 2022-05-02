@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {getCityFromDB} from '../../redux/actions/thunk/thunkCity'
+import {getCityFromDB} from '../../redux/thunk/thunkCity'
 
 import InputCenter from '../InputCenter/InputCenter'
 import StaticGraph from '../StaticGraph/StaticGraph'
