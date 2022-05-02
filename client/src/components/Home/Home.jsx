@@ -15,9 +15,6 @@ function Home() {
         dispatch(getCityFromDB())
     }, [])
 
-    useEffect(() => {
-      dispatch(getCityFromDB())
-  }, [])
 
     return (
         <div style={{margin: 30}}>
