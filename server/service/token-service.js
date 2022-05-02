@@ -1,54 +1,55 @@
 const jwt = require('jsonwebtoken');
-const { decode } = require('jsonwebtoken');
-const { Token } = require('../db/models');
+const {decode} = require('jsonwebtoken');
+const {Token} = require('../db/models');
 
 class TokenService {
-  async generateTokens(payload) {
-    const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '10m' });
-    const refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '30d' });
-    return { accessToken, refreshToken };
-  }
-
-  async saveToken(newUser, refreshToken) {
-    const data = newUser.dataValues.id;
-    const tokenData = await Token.findOne({ where: { userId: data } });
-    if (tokenData) {
-      await Token.update({ refreshToken }, { where: { userId: data } });
-    } else {
-      const token = await Token.create({ userId: data, refreshToken });
-      return token;
+    async generateTokens(payload) {
+        const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1m'});
+        const refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '30d'});
+        return {accessToken, refreshToken};
     }
-  }
 
-  async removeToken(refreshToken) {
-    const token = await Token.findOne({ where: { refreshToken } });
-    if (token) {
-      await Token.destroy({ where: { refreshToken } });
+    async saveToken(newUser, refreshToken) {
+        const data = newUser.dataValues.id;
+        const tokenData = await Token.findOne({where: {userId: data}});
+        if (tokenData) {
+            await Token.update({refreshToken}, {where: {userId: data}});
+        } else {
+            const token = await Token.create({userId: data, refreshToken});
+            return token;
+        }
     }
-  }
 
-  async findToken(refreshToken) {
-    const token = await Token.findOne({ where: { refreshToken } });
-    return token;
-  }
-
-  validateAccessToken(token) {
-    try {
-      const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-      console.log(decoded);
-      return decoded;
-    } catch (err) {
-      return null;
+    async removeToken(refreshToken) {
+        const token = await Token.findOne({where: {refreshToken}});
+        if (token) {
+            await Token.destroy({where: {refreshToken}});
+        }
     }
-  }
 
-  validateRefreshToken(token) {
-    try {
-      const decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
-      return decoded;
-    } catch (err) {
-      return null;
+    async findToken(refreshToken) {
+        const token = await Token.findOne({where: {refreshToken}});
+        return token;
     }
-  }
+
+    validateAccessToken(token) {
+        try {
+            const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+            console.log(decoded);
+            return decoded;
+        } catch (err) {
+            return null;
+        }
+    }
+
+    validateRefreshToken(token) {
+        try {
+            const decoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+            return decoded;
+        } catch (err) {
+            return null;
+        }
+    }
 }
+
 module.exports = new TokenService();
