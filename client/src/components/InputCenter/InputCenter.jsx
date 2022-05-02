@@ -27,12 +27,21 @@ function InputCenter(e) {
                 renderInput={(params) => <TextField {...params} label="City"/>}
                 onChange={(e) => setData(e.target.innerText)}
 
-            />
-            <Button onClick={searchCity} variant="contained" color="success">
-                Find city
-            </Button>
-        </>
-    )
+        />
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={slice}
+            sx={{width: 300}}
+            renderInput={(params) => <TextField {...params} label="City"/>}
+            onChange={(e) => setData(e.target.innerText)}
+
+        />
+        <Button onClick={searchCity} variant="contained" color="success">
+          Find city
+        </Button>
+      </>
+  )
 }
 
 export default InputCenter
