@@ -8,7 +8,7 @@ class ApiData {
                 `https://www.numbeo.com/api/cities?api_key=${process.env.API_KEY_NUM}`
             );
 
-            const result = response.data.cities.map((el) => ({
+            const result = response.data.cities.slice(0, 100).map((el) => ({
                 id: el.city_id,
                 city: el.city,
                 country: el.country,

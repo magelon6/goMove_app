@@ -1,9 +1,9 @@
 import {Autocomplete, Button, TextField} from '@mui/material'
 import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {getPriceFromDB} from '../../redux/thunk/thunkPrice'
+import {getPriceFromDB, getPriceFromDB2} from '../../redux/thunk/thunkPrice'
 
-function InputCenter(e) {
+function InputCenter() {
 
     const city = useSelector((state) => state.city)
     const [data, setData] = useState("")
@@ -15,6 +15,8 @@ function InputCenter(e) {
         let new1 = data.split(',')
         let new2 = {city: new1[0], country: new1[1]}
         dispatch(getPriceFromDB(new2))
+        dispatch(getPriceFromDB2(new2))
+
     }
 
     return (
