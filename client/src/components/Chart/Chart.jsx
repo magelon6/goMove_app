@@ -1,5 +1,6 @@
 import React from "react";
 
+
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from 'chart.js/auto'
 import { useSelector } from "react-redux";
@@ -26,9 +27,11 @@ const price2 = useSelector((state => state.price2))
         backgroundColor: "rgba(255, 0, 0, 0.5)",
         fill: true
 
+
       }
     ]
   };
+
 
 
   const barChart = (
@@ -43,11 +46,13 @@ const price2 = useSelector((state => state.price2))
           fontSize: 15
         },
 
+
         legend: {
           display: true, //Is the legend shown?
           position: "top" //Position of the legend.
         }
       }}
+
 
       data={barChartData}
     />
@@ -56,4 +61,5 @@ const price2 = useSelector((state => state.price2))
 };
 
 export default Chart;
+
 
