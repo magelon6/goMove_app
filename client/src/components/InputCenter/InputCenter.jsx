@@ -7,8 +7,6 @@ import Chart1 from '../SecondChart/SecondChart'
 
 
 
-import Chart from '../Chart/Chart'
-import Chart1 from '../SecondChart/SecondChart'
 
 
 
@@ -17,11 +15,6 @@ function InputCenter() {
     const city = useSelector((state) => state.city)
     const [data, setData] = useState("")
     const [data2, setData2] = useState("")
-<<<<<<< HEAD
-    const price = useSelector((state) => state.price)
-    const [chart, setChart] = useState(price)
-
-=======
 
 
     const price = useSelector((state) => state.price)
@@ -29,7 +22,6 @@ function InputCenter() {
 
 
 
->>>>>>> developer
     
     const dispatch = useDispatch()
 
@@ -40,12 +32,9 @@ function InputCenter() {
         let new2 = {city: new1[0], country: new1[1]}
         let new3 = data2.split(',')
         let new4 = {city: new3[0], country: new3[1]}
-<<<<<<< HEAD
-=======
 
         dispatch(getPriceFromDB(new2))
         dispatch(getPriceFromDB2(new4))
->>>>>>> developer
 
         dispatch(getPriceFromDB(new2))
         dispatch(getPriceFromDB2(new4))
@@ -56,10 +45,6 @@ function InputCenter() {
       setChart(!!price.length)
     }, [price])
 
-<<<<<<< HEAD
-=======
-
->>>>>>> developer
     return (
         <>
             <Autocomplete
@@ -78,11 +63,8 @@ function InputCenter() {
             sx={{width: 300}}
             renderInput={(params) => <TextField {...params} label="City"/>}
             onChange={(e) => setData2(e.target.innerText)}
-<<<<<<< HEAD
-=======
 
 
->>>>>>> developer
 
         />
         <Button onClick={searchCity} variant="contained" color="success">

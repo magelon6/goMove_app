@@ -7,7 +7,9 @@ const apiData = require('../controller/api');
 router.post(
   '/registration',
   body('email').isEmail().withMessage('Email is not valid'),
-  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
+  body('password')
+    .isLength({ min: 6 })
+    .withMessage('Password must be at least 6 characters long'),
   userController.registration,
 );
 router.post('/login', userController.login);
@@ -17,7 +19,5 @@ router.get('/refresh', userController.refresh);
 router.get('/users', authMiddleware, userController.getUsers);
 router.get('/city', apiData.home);
 router.post('/price', apiData.price);
-
-
 
 module.exports = router;
