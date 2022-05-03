@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getPriceFromDB, getPriceFromDB2} from '../../redux/thunk/thunkPrice'
 
-
 import Chart from '../Chart/Chart'
 import Chart1 from '../SecondChart/SecondChart'
 
@@ -15,10 +14,8 @@ function InputCenter() {
     const [data, setData] = useState("")
     const [data2, setData2] = useState("")
 
-
     const price = useSelector((state) => state.price)
     const [chart, setChart] = useState(price)
-
 
 
     
@@ -42,7 +39,6 @@ function InputCenter() {
       setChart(!!price.length)
     }, [price])
 
-
     return (
         <>
             <Autocomplete
@@ -63,7 +59,6 @@ function InputCenter() {
             onChange={(e) => setData2(e.target.innerText)}
 
 
-
         />
         <Button onClick={searchCity} variant="contained" color="success">
           Find city
@@ -79,7 +74,6 @@ function InputCenter() {
             }
       </>
   )
-
 
 }
 

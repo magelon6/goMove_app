@@ -16,6 +16,7 @@ function App() {
     const [user, setUser] = useState();
 
 
+
     const verify = () => {
         if (THUNK_checkAuth()) {
             setLoggedIn(true);
@@ -42,6 +43,10 @@ function App() {
                 <Route path='/profile' element={<UserProfile/>}/>
                 <Route path='/registration' element={<Registration/>}/>
             </Routes>
+
+           
+            
+
 
         </div>
     );
