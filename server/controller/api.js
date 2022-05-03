@@ -24,7 +24,7 @@ const newResult = response.data.cities.filter((el) => (el.city !== 'Karaganda (Q
             res.sendStatus(400);
         }
     }
-  }
+  
 
   async price(req, res) {
     try {
