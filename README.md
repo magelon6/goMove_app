@@ -1,5 +1,5 @@
 
-![Logo](https://i.ibb.co/nLBqCkQ/linkedin-banner-image-2.png)
+![Logo](https://i.ibb.co/y6jrfMN/logo-transparent.png)
 
 # GoMove
 
