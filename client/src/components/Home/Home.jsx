@@ -33,7 +33,7 @@ function Home() {
                 </Grid>
             </Grid>
             <InputCenter/>
-            <div className='d-flex '>
+            {/* <div className='d-flex '>
               <div width="300px">
                 {price && price.map((el) =>
                     <div key={el.id} style={{border: '2px solid black'}}>
@@ -60,7 +60,7 @@ function Home() {
                   </div>
                 )}
               </div>
-            </div>
+            </div> */}
         </div>
 
     )
