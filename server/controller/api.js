@@ -2,11 +2,6 @@ const axios = require("axios");
 
 class ApiData {
   async home(req, res) {
-    try {
-      const response = await axios(
-        `https://www.numbeo.com/api/cities?api_key=${process.env.API_KEY_NUM}`,
-      );
-
         try {
             const response = await axios(
                 `https://www.numbeo.com/api/cities?api_key=${process.env.API_KEY_NUM}`
