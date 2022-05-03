@@ -1,10 +1,8 @@
+<p align="center"><img src="https://i.ibb.co/y6jrfMN/logo-transparent.png" width="400" /></p>
 
-![Logo](https://i.ibb.co/y6jrfMN/logo-transparent.png)
-
-# GoMove
+## Intro
 
 SPA for digital nomads that allows you to evaluate the selected country from different angles in relation to the current location.
-
 
 ## Tech Stack
 
