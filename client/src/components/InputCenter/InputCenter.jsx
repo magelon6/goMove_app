@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getPriceFromDB, getPriceFromDB2} from '../../redux/thunk/thunkPrice'
 
+
 function InputCenter() {
 
     const city = useSelector((state) => state.city)
@@ -44,12 +45,13 @@ function InputCenter() {
             renderInput={(params) => <TextField {...params} label="City"/>}
             onChange={(e) => setData2(e.target.innerText)}
 
-        />
-        <Button onClick={searchCity} variant="contained" color="success">
-          Find city
-        </Button>
-      </>
-  )
+
+            />
+            <Button onClick={searchCity} variant="contained" color="success">
+                Find city
+            </Button>
+        </>
+    )
 }
 
 export default InputCenter
