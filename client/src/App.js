@@ -7,6 +7,9 @@ import Login from "./components/Login/Login";
 import {THUNK_checkAuth} from "./redux/thunk/thunkAuth";
 import UserProfile from './components/UserProfile/UserProfile';
 
+import Chart from './components/Chart/Chart';
+import Chart2 from './components/Chart/Chart';
+
 
 
 function App() {
@@ -16,6 +19,7 @@ function App() {
     
 
   
+
 
     const verify = () => {
         if (THUNK_checkAuth()) {

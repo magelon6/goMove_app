@@ -6,12 +6,23 @@ class ApiData {
         try {
             const response = await axios(
                 `https://www.numbeo.com/api/cities?api_key=${process.env.API_KEY_NUM}`
+<<<<<<< HEAD
             ); 
            
 
 const newResult = response.data.cities.filter((el) => (el.city !== 'Karaganda (Qaraghandy)') && (el.city !== 'Buon Ma Thuot'))
 
             const result = newResult.map((el) => ({
+=======
+
+            ); 
+           
+
+const newResult = response.data.cities.filter((el) => (el.city !== 'Karaganda (Qaraghandy)') && (el.city !== 'Buon Ma Thuot'))
+
+            const result = newResult.map((el) => ({
+
+>>>>>>> developer
                 id: el.city_id,
                 city: el.city,
                 country: el.country,

@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import logoSvg from '../../images/logo_transparent.png'
 
+
 const StyledToolbar = styled(Toolbar)({
     display:"flex",
     justifyContent:"space-between"
@@ -53,6 +54,7 @@ const NavBar = () => {
                 <form onSubmit={(e) => submitHandler(e.target.value )}>
 
 <Search>
+
                     <InputBase placeholder='Search' value={findCity}></InputBase>
                 </Search>
                 <button type='submit'> найти</button>
@@ -98,6 +100,7 @@ const NavBar = () => {
                     </Link>
                     <Link to='/auth' style={{ textDecoration: 'none' }}>
                       <Button sx={{color: "white"}}>Sign In</Button>
+
                   </Link>
                     <Avatar sx={{width:35, height:35}} src='#'/>
                     <MenuIcon onClick={(e) => setOpen(true)} /> */}
