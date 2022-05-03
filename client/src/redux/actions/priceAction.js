@@ -9,4 +9,6 @@ export const getPrice = (getPriceCountry) => ({
 export const getPrice2 = (getPriceCountry2) => ({
   type: GET_PRICE2,
   payload: getPriceCountry2
+
+
 })
