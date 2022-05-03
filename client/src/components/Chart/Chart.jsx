@@ -1,6 +1,4 @@
 import React from "react";
-
-
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from 'chart.js/auto'
 import { useSelector } from "react-redux";
@@ -11,7 +9,6 @@ const price2 = useSelector((state => state.price2))
 
   const barChartData = {
     labels: price.slice(0, 7).map((el) => el.name),
-
     datasets: [
       {
         data: price.slice(0,7).map((el) => el.price),
@@ -26,13 +23,9 @@ const price2 = useSelector((state => state.price2))
         borderColor: "#ff3333",
         backgroundColor: "rgba(255, 0, 0, 0.5)",
         fill: true
-
-
       }
     ]
   };
-
-
 
   const barChart = (
     <Bar
@@ -45,15 +38,11 @@ const price2 = useSelector((state => state.price2))
           text: "COVID-19 Cases of Last 3 Months",
           fontSize: 15
         },
-
-
         legend: {
           display: true, //Is the legend shown?
           position: "top" //Position of the legend.
         }
       }}
-
-
       data={barChartData}
     />
   );
@@ -61,5 +50,3 @@ const price2 = useSelector((state => state.price2))
 };
 
 export default Chart;
-
-
