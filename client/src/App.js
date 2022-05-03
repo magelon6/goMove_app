@@ -6,13 +6,16 @@ import Registration from './components/Registration/Registration';
 import Login from "./components/Login/Login";
 import {THUNK_checkAuth} from "./redux/thunk/thunkAuth";
 import UserProfile from './components/UserProfile/UserProfile';
-import Chart from './components/Chart/Chart';
-import Chart2 from './components/Chart/Chart';
+
 
 
 function App() {
+  
     const [loggedIn, setLoggedIn] = useState(false);
     const [user, setUser] = useState();
+    
+
+  
 
     const verify = () => {
         if (THUNK_checkAuth()) {
@@ -40,7 +43,9 @@ function App() {
                 <Route path='/profile' element={<UserProfile/>}/>
                 <Route path='/registration' element={<Registration/>}/>
             </Routes>
-            <Chart2/>
+           
+            
+
         </div>
     );
 }

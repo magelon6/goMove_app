@@ -3,23 +3,30 @@ import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from 'chart.js/auto'
 import { useSelector } from "react-redux";
 
-const Chart = () => {
+const Chart1 = () => {
   const price = useSelector((state => state.price))
 const price2 = useSelector((state => state.price2))
 
+    // let arrayPrice = price.slice(7, 13).map((el) => el.price);
+    // let arrayPrice2 = price2.slice(7, 13).map((el) => el.price);
+
+    // console.log('-----',arrayPrice);
+    // console.log('-----' , arrayPrice2);
+
+
   const barChartData = {
-    labels: price.slice(0, 7).map((el) => el.name),
+    labels: price.slice(7, 13).map((el) => el.name),
 
     datasets: [
       {
-        data: price.slice(0,7).map((el) => el.price),
+        data: price.slice(7,13).map((el) => el.price),
         label: "Infected People",
         borderColor: "#3333ff",
         backgroundColor: "rgba(0, 0, 255, 0.5)",
         fill: true
       },
       {
-        data: price2.slice(0,7).map((el) => el.price*74),
+        data: price2.slice(7,13).map((el) => el.price*74),
         label: "Deaths People",
         borderColor: "#ff3333",
         backgroundColor: "rgba(255, 0, 0, 0.5)",
@@ -50,4 +57,4 @@ const price2 = useSelector((state => state.price2))
   return barChart;
 };
 
-export default Chart;
+export default Chart1;
