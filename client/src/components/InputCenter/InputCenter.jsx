@@ -1,7 +1,11 @@
 import {Autocomplete, Button, TextField} from '@mui/material'
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getPriceFromDB, getPriceFromDB2} from '../../redux/thunk/thunkPrice'
+
+import Chart from '../Chart/Chart'
+import Chart1 from '../SecondChart/SecondChart'
+
 
 
 function InputCenter() {
@@ -9,6 +13,10 @@ function InputCenter() {
     const city = useSelector((state) => state.city)
     const [data, setData] = useState("")
     const [data2, setData2] = useState("")
+
+    const price = useSelector((state) => state.price)
+    const [chart, setChart] = useState(price)
+
 
     
     const dispatch = useDispatch()
@@ -25,6 +33,12 @@ function InputCenter() {
         dispatch(getPriceFromDB2(new4))
 
     }
+
+    useEffect(() => {
+      console.log('111111111' , price);
+      setChart(!!price.length)
+    }, [price])
+
 
     return (
         <>
@@ -46,12 +60,22 @@ function InputCenter() {
             onChange={(e) => setData2(e.target.innerText)}
 
 
-            />
-            <Button onClick={searchCity} variant="contained" color="success">
-                Find city
-            </Button>
-        </>
-    )
+        />
+        <Button onClick={searchCity} variant="contained" color="success">
+          Find city
+        </Button>
+
+
+        {chart 
+            && 
+            <>
+            <Chart/>
+            <Chart1/>
+            </> 
+            }
+      </>
+  )
+
 }
 
 export default InputCenter
