@@ -11,14 +11,10 @@ import Chart from './components/Chart/Chart';
 import Chart2 from './components/Chart/Chart';
 
 
-
 function App() {
-  
     const [loggedIn, setLoggedIn] = useState(false);
     const [user, setUser] = useState();
-    
 
-  
 
 
     const verify = () => {
@@ -47,8 +43,10 @@ function App() {
                 <Route path='/profile' element={<UserProfile/>}/>
                 <Route path='/registration' element={<Registration/>}/>
             </Routes>
+
            
             
+
 
         </div>
     );
