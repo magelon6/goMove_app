@@ -57,5 +57,6 @@ const Chart = () => {
   return barChart;
 };
 
+
 export default Chart;
 

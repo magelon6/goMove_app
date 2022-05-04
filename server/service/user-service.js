@@ -111,17 +111,32 @@ class UserService {
         }
         return user;
     }
-
-    async uploadUserAvatar(userId, file) {
-        const user = await User.findOne({where: {id: userId}});
+    async getUser(id) {
+        const user = await User.findOne({where: {id}});
         if (!user) {
             throw ApiError.badRequestError('User not found');
         }
-        const fileName = await fileService.uploadFile(file);
-        user.avatar = fileName;
-        await user.save();
         return user;
     }
+    async updateUser(userId, name, email, photo) {
+        const userFromDb = await User.findOne({where: {id}});
+        if (!userFromDb) {
+            throw ApiError.badRequestError('User not found');
+        }
+        const user = await User.update({name, email, photo}, {where: {id: userId}});
+        return user;
+    }
+
+    // async uploadUserAvatar(userId, file) {
+    //     const user = await User.findOne({where: {id: userId}});
+    //     if (!user) {
+    //         throw ApiError.badRequestError('User not found');
+    //     }
+    //     const fileName = await fileService.uploadFile(file);
+    //     user.avatar = fileName;
+    //     await user.save();
+    //     return user;
+    // }
 }
 
 module.exports = new UserService();

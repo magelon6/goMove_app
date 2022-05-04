@@ -3,23 +3,25 @@ import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { getlineFrontCity } from '../../redux/actions/lineFrontCityAction'
 import {getPriceFromDB, getPriceFromDB2} from '../../redux/thunk/thunkPrice'
+// import Chart from '../Chart/Chart'
+// import Chart1 from '../SecondChart/SecondChart'
 
+<<<<<<< HEAD
 import Chart from '../Chart/Chart'
 import Chart1 from '../SecondChart/SecondChart'
 
 
+=======
+>>>>>>> e21094f1e4561e96accd800c5d0206868c419b63
 
 function InputCenter() {
 
     const city = useSelector((state) => state.city)
     const [data, setData] = useState("")
     const [data2, setData2] = useState("")
-
     const price = useSelector((state) => state.price)
-    const [chart, setChart] = useState(price)
+    // const [chart, setChart] = useState(price)
 
-
-    
     const dispatch = useDispatch()
 
     const slice = city.map(el => ({id: el.id, label: `${el.city}, ${el.country}`}))
@@ -45,9 +47,10 @@ function InputCenter() {
 
     }
 
-    useEffect(() => {
-      setChart(!!price.length)
-    }, [price])
+    // useEffect(() => {
+    //   console.log('111111111' , price);
+    //   setChart(!!price.length)
+    // }, [price])
 
     return (
         <>
@@ -56,7 +59,7 @@ function InputCenter() {
                 id="combo-box-demo"             
                 options={slice}
                 sx={{width: 300}}
-                renderInput={(params) => <TextField {...params} label="City"/>}
+                renderInput={(params) => <TextField sx={{background: 'white'}} {...params} label="City"/>}
                 onChange={(e) => setData(e.target.innerText)}
 
         />
@@ -65,26 +68,23 @@ function InputCenter() {
             id="combo-box-demo"
            options={slice}
             sx={{width: 300}}
-            renderInput={(params) => <TextField {...params} label="City"/>}
+            renderInput={(params) => <TextField sx={{background: 'white'}} {...params} label="City"/>}
             onChange={(e) => setData2(e.target.innerText)}
-
-
         />
-        <Button onClick={searchCity} variant="contained" color="success">
+        <Button onClick={searchCity} variant="contained" sx={{background: '#FFB703', marginLeft: '20px'}}>
           Find city
         </Button>
 
 
-        {chart 
-            && 
+        {/* {chart
+            &&
             <>
             <Chart/>
             <Chart1/>
-            </> 
-            }
+            </>
+            } */}
       </>
   )
-
 }
 
 export default InputCenter

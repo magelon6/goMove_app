@@ -27,7 +27,6 @@ class ApiData {
   async price(req, res) {
     try {
       const { city, country } = req.body;
-      
       const response = await axios(
         `https://www.numbeo.com//api/city_prices?api_key=${process.env.API_KEY_NUM}&city=${city}&country=${country}`
       );
@@ -42,9 +41,9 @@ class ApiData {
       const result = response.data.prices.map((el) => ({
         id: el.item_id,
         name: el.item_name,
-        price: (el.average_price / usd.one_usd_to_currency).Math.cei,
+        price: (el.average_price / usd.one_usd_to_currency),
       }));
-     
+
       res.json(result);
     } catch (err) {
       console.log(err);
@@ -56,5 +55,3 @@ class ApiData {
 }
 
 module.exports = new ApiData();
-
-
