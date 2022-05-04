@@ -44,21 +44,21 @@ const NavBar = () => {
     }
 
     return (
-        <AppBar position='sticky' sx={{backgroundColor: '#023047'}}>
+        <AppBar position='sticky' sx={{backgroundColor: '#023047'}} elevation={0}>
             <StyledToolbar >
                 <Typography variant='h6'>
                     <Link to='/' style={{ textDecoration: 'none', color: 'white'}}>
                         <img src={logoSvg} style={{height: 50, marginTop: 10}} alt="SVG as an image" />
                     </Link>
                 </Typography>
-                <form onSubmit={(e) => submitHandler(e.target.value )}>
+                {/* <form onSubmit={(e) => submitHandler(e.target.value )}>
 
 <Search>
 
                     <InputBase placeholder='Search' value={findCity}></InputBase>
                 </Search>
                 <button type='submit'> найти</button>
-                </form>
+                </form> */}
                 <Icons>
                     {/* Тут прописать условие авторизации пользователя */}
                     {user? 
