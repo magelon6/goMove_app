@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import logoSvg from '../../images/logo_transparent.png'
 
-
 const StyledToolbar = styled(Toolbar)({
     display:"flex",
     justifyContent:"space-between"
@@ -54,7 +53,6 @@ const NavBar = () => {
                 {/* <form onSubmit={(e) => submitHandler(e.target.value )}>
 
 <Search>
-
                     <InputBase placeholder='Search' value={findCity}></InputBase>
                 </Search>
                 <button type='submit'> найти</button>
