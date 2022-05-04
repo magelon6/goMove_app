@@ -1,6 +1,7 @@
 const axios = require("axios");
 
 class ApiData {
+
   async home(req, res) {
     try {
       const response = await axios(
@@ -53,6 +54,7 @@ class ApiData {
   }
 
  
+
 }
 
 module.exports = new ApiData();

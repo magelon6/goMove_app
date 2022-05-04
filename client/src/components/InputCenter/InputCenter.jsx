@@ -8,18 +8,16 @@ import Chart from '../Chart/Chart'
 import Chart1 from '../SecondChart/SecondChart'
 
 
-
 function InputCenter() {
 
     const city = useSelector((state) => state.city)
     const [data, setData] = useState("")
     const [data2, setData2] = useState("")
 
+
     const price = useSelector((state) => state.price)
     const [chart, setChart] = useState(price)
 
-
-    
     const dispatch = useDispatch()
 
     const slice = city.map(el => ({id: el.id, label: `${el.city}, ${el.country}`}))
@@ -68,7 +66,6 @@ function InputCenter() {
             renderInput={(params) => <TextField {...params} label="City"/>}
             onChange={(e) => setData2(e.target.innerText)}
 
-
         />
         <Button onClick={searchCity} variant="contained" color="success">
           Find city
@@ -84,7 +81,6 @@ function InputCenter() {
             }
       </>
   )
-
 }
 
 export default InputCenter
