@@ -53,17 +53,17 @@ function InputCenter() {
             renderInput={(params) => <TextField sx={{background: 'white'}} {...params} label="City"/>}
             onChange={(e) => setData2(e.target.innerText)}
         />
-        <Button onClick={searchCity} variant="contained" sx={{background: '#FFB703'}}>
+        <Button onClick={searchCity} variant="contained" sx={{background: '#FFB703', marginLeft: '20px'}}>
           Find city
         </Button>
 
 
-        {/* {chart 
-            && 
+        {/* {chart
+            &&
             <>
             <Chart/>
             <Chart1/>
-            </> 
+            </>
             } */}
       </>
   )
