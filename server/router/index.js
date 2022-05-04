@@ -19,5 +19,7 @@ router.get('/refresh', userController.refresh);
 router.get('/users', authMiddleware, userController.getUsers);
 router.get('/city', apiData.home);
 router.post('/price', apiData.price);
+router.get('/userprofile/:id', userController.getUserProfile);
+router.post('/userprofile/:id', userController.updateUserProfile);
 
 module.exports = router;
