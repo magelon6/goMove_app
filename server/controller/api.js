@@ -42,7 +42,7 @@ class ApiData {
       const result = response.data.prices.map((el) => ({
         id: el.item_id,
         name: el.item_name,
-        price: (el.average_price / usd.one_usd_to_currency),
+        price: (el.average_price / usd.one_usd_to_currency).Math.cei,
       }));
      
       res.json(result);
@@ -57,10 +57,4 @@ class ApiData {
 
 module.exports = new ApiData();
 
-// https://www.numbeo.com//api/city_prices?api_key=${process.env.API_KEY_NUM}&city=${city}&country=${country}
-// https://www.numbeo.com/api/city_prices?api_key=omjk9aakst2wko&city=Abelessa&country=Algeria
-// https://www.numbeo.com/api/cities?api_key=omjk9aakst2wko
 
-// https://www.numbeo.com//api/city_prices?api_key=omjk9aakst2wko&city=Belgrade&country=Serbia
-
-// https://www.numbeo.com/api/currency_exchange_rates?api_key=omjk9aakst2wko
