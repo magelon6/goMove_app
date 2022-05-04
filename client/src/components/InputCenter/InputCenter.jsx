@@ -6,13 +6,6 @@ import {getPriceFromDB, getPriceFromDB2} from '../../redux/thunk/thunkPrice'
 // import Chart from '../Chart/Chart'
 // import Chart1 from '../SecondChart/SecondChart'
 
-<<<<<<< HEAD
-import Chart from '../Chart/Chart'
-import Chart1 from '../SecondChart/SecondChart'
-
-
-=======
->>>>>>> e21094f1e4561e96accd800c5d0206868c419b63
 
 function InputCenter() {
 
