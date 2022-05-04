@@ -1,33 +1,28 @@
-import { USER_UPDATE_FAIL, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS } from "../types/Profile.types";
-import axios from "axios";
+import axios from 'axios';
+import { API_URL } from '../../http';
+import { SET_USER } from '../types/Profile.types';
 
-export const updateProfile = (user) => async (dispatch, getState) => {
-  try {
-    dispatch({ type: USER_UPDATE_REQUEST });
+export const setUser = (user) => ({
+  type: SET_USER,
+  payload: user,
+});
 
-    const {
-      userLogin: { userInfo },
-    } = getState();
+export const getUserData = (id) => async (dispatch) => {
+  axios.get(`${API_URL.getUser(id.id)}`)
+    .then((response) => dispatch(setUser(response.data)));
+};
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
-
-    const { data } = await axios.post("/api/users/profile", user, config);
-
-    dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
-
-    localStorage.setItem("userInfo", JSON.stringify(data));
-  } catch (error) {
-    dispatch({
-      type: USER_UPDATE_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
+export const updateUser = (inputs, id) => async (dispatch) => {
+  const formData = new FormData();
+  // console.log(inputs);
+  formData.append('file', inputs.file ?? inputs.photo);
+  formData.append('name', inputs.name);
+  formData.append('email', inputs.email);
+  await fetch(`${API_URL.updateUser(id.id)}`, {
+    method: 'PATCH',
+    credentials: 'include',
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => dispatch(setUser(data)));
 };

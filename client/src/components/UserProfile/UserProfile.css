@@ -1,18 +1,6 @@
-.profileList {
-  max-width: 800px;
-  height: 50px;
-}
-
-.profileLi {
-  display: display-flex;
-  margin: 15px;
-  padding: 10px;
-  font-size: 20px;
-}
-
-.formochka {
+.UserProfile__container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
+  width: 100vw;
+  justify-content: center;
+  gap: 35px;
 }
