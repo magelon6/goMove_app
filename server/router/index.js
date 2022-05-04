@@ -22,4 +22,6 @@ router.post('/price', apiData.price);
 router.get('/userprofile/:id', userController.getUserProfile);
 router.post('/userprofile/:id', userController.updateUserProfile);
 
+// router.post('/userprofile/:id/avatar', userController.updateUserAvatar);
+
 module.exports = router;
