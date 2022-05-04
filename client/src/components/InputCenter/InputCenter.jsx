@@ -16,7 +16,7 @@ function InputCenter() {
 
 
     const price = useSelector((state) => state.price)
-    const [chart, setChart] = useState(price)
+    // const [chart, setChart] = useState(price)
 
     const dispatch = useDispatch()
 
@@ -43,9 +43,10 @@ function InputCenter() {
 
     }
 
-    useEffect(() => {
-      setChart(!!price.length)
-    }, [price])
+    // useEffect(() => {
+    //   console.log('111111111' , price);
+    //   setChart(!!price.length)
+    // }, [price])
 
     return (
         <>
@@ -54,7 +55,7 @@ function InputCenter() {
                 id="combo-box-demo"             
                 options={slice}
                 sx={{width: 300}}
-                renderInput={(params) => <TextField {...params} label="City"/>}
+                renderInput={(params) => <TextField sx={{background: 'white'}} {...params} label="City"/>}
                 onChange={(e) => setData(e.target.innerText)}
 
         />
@@ -63,22 +64,21 @@ function InputCenter() {
             id="combo-box-demo"
            options={slice}
             sx={{width: 300}}
-            renderInput={(params) => <TextField {...params} label="City"/>}
+            renderInput={(params) => <TextField sx={{background: 'white'}} {...params} label="City"/>}
             onChange={(e) => setData2(e.target.innerText)}
-
         />
-        <Button onClick={searchCity} variant="contained" color="success">
+        <Button onClick={searchCity} variant="contained" sx={{background: '#FFB703', marginLeft: '20px'}}>
           Find city
         </Button>
 
 
-        {chart 
-            && 
+        {/* {chart
+            &&
             <>
             <Chart/>
             <Chart1/>
-            </> 
-            }
+            </>
+            } */}
       </>
   )
 }

@@ -1,7 +1,6 @@
 const axios = require("axios");
 
 class ApiData {
-
   async home(req, res) {
     try {
       const response = await axios(
@@ -28,7 +27,6 @@ class ApiData {
   async price(req, res) {
     try {
       const { city, country } = req.body;
-
       const response = await axios(
         `https://www.numbeo.com//api/city_prices?api_key=${process.env.API_KEY_NUM}&city=${city}&country=${country}`
       );
@@ -53,8 +51,7 @@ class ApiData {
     }
   }
 
-
-
+ 
 }
 
 module.exports = new ApiData();

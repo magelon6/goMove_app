@@ -37,7 +37,6 @@ const Chart = () => {
       type="bar"
       width={130}
       height={50}
-
       options= {{
         plugins: {
             title: {
@@ -52,7 +51,6 @@ const Chart = () => {
         }
     }}
 
-
       data={barChartData}
     />
   );
@@ -61,5 +59,4 @@ const Chart = () => {
 
 
 export default Chart;
-
 
