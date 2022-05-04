@@ -1,0 +1,1 @@
+export const GET_FRONT_CITY = 'GET_FRONT_CITY'
