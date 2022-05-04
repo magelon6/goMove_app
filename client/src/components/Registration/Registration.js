@@ -51,10 +51,8 @@ export default function Registration() {
                                         check your spam folder.
                                         You can also check your email later. If you still don't see the email, please <a
                                         href="mailto:a@artka.dev"> contact us.</a>
-                                        <br>
                                             You can login to your account before you confirm your email, but some
                                             features may be disabled.
-                                        </br>
                                     </p>
                                 </Typography>
                                 <Link href="/auth">

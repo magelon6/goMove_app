@@ -78,6 +78,25 @@ class UserController {
             next(err);
         }
     }
+    async getUserProfile(req, res, next) {
+        try {
+            const userId = req.params.id;
+            const user = await userService.getUser(userId);
+            return res.json(user);
+        } catch (err) {
+            next(err);
+        }
+    }
+    async updateUserProfile(req, res, next) {
+        try {
+            const userId = req.params.id;
+            const {name, email, photo} = req.body;
+            const user = await userService.updateUser(userId, name, email, photo);
+            return res.json(user);
+        } catch (err) {
+            next(err);
+        }
+    }
 
     async uploadUserAvatar(req, res, next) {
         try {
