@@ -3,8 +3,9 @@ import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { getlineFrontCity } from '../../redux/actions/lineFrontCityAction'
 import {getPriceFromDB, getPriceFromDB2} from '../../redux/thunk/thunkPrice'
-// import Chart from '../Chart/Chart'
-// import Chart1 from '../SecondChart/SecondChart'
+
+import Chart from '../Chart/Chart'
+import Chart1 from '../SecondChart/SecondChart'
 
 
 function InputCenter() {
@@ -12,6 +13,8 @@ function InputCenter() {
     const city = useSelector((state) => state.city)
     const [data, setData] = useState("")
     const [data2, setData2] = useState("")
+
+
     const price = useSelector((state) => state.price)
     // const [chart, setChart] = useState(price)
 
