@@ -33,34 +33,7 @@ function Home() {
                 </Grid>
             </Grid>
             <InputCenter/>
-            {/* <div className='d-flex '>
-              <div width="300px">
-                {price && price.map((el) =>
-                    <div key={el.id} style={{border: '2px solid black'}}>
-                        <p> {el.name}</p>
-                        <p> {el.price}</p>
-                    </div>
-                )}
-              </div>
-              <br>
-              </br>
-              <br>
-              </br>
-              <br>
-              </br>
-              <br>
-              </br>
-              <br>
-              </br>
-              <div width="800px">
-                {price2 && price2.map((el) =>
-                  <div key={el.id} style={{border: '2px solid black'}}>
-                      <p> {el.name}</p>
-                      <p> {el.price}</p>
-                  </div>
-                )}
-              </div>
-            </div> */}
+             
         </div>
 
     )
