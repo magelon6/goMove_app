@@ -5,6 +5,7 @@ export default class AuthService {
         const {name, email, password} = userData;
         const response = await $api.post("/registration", {name, email, password});
         localStorage.setItem("token", response.data.accessToken);
+        console.log(response);
         return response;
     }
 
