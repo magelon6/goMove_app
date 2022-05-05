@@ -16,6 +16,7 @@ function UserProfile() {
     const [password, setPassword] = useState('');
     const userData = useSelector((store) => store.user);
     const [inputs, setInputs] = useState({...userData});
+    console.log(userData.user.name, '===========');
 
     useEffect(() => {
         dispatch(getUserData(id));
