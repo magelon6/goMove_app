@@ -27,7 +27,7 @@ export default function Registration() {
         }
         try {
             const request = await axios.post(BASE_URL, {name, email, password});
-            console.log(request);
+            //checking if user is registered
             if (request.data.user) {
                 setSuccess(true);
             } else {
@@ -39,7 +39,6 @@ export default function Registration() {
         }
         dispatch(THUNK_ACTION_REGISTER({name, email, password}));
     }
-
 
     return (
         <>
@@ -71,7 +70,7 @@ export default function Registration() {
                                         features may be disabled.
                                     </p>
                                 </Typography>
-                                <Link href="/auth">
+                                <Link to="/auth">
                                     <Button variant="contained" color="primary" size="large">
                                         Login
                                     </Button>
@@ -103,7 +102,7 @@ export default function Registration() {
                                         <TextField
                                             fullWidth
                                             id="name"
-                                            label="User Name"
+                                            label="UserName"
                                             name="name"
                                             autoComplete="name"
                                             onChange={(e) => {
@@ -180,7 +179,7 @@ export default function Registration() {
                                 <Grid container justifyContent="flex-end">
                                     <Grid item>
                                         <span>Already have an account? </span>
-                                        <Link href='/auth' variant="body2">
+                                        <Link to='/auth' variant="body2">
                                             Sign-In
                                         </Link>
                                     </Grid>
