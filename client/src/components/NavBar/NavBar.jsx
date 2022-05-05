@@ -50,34 +50,36 @@ const NavBar = () => {
                 </Typography>
                 <Icons>
                     {/* Тут прописать условие авторизации пользователя */}
-                    {user ?
-                        <>
-                            <Avatar sx={{width: 35, height: 35}} src='#'/>
-                            <MenuIcon onClick={(e) => setOpen(true)}/>
-                            <Menu
-                                id="demo-positioned-menu"
-                                aria-labelledby="demo-positioned-button"
-                                open={open}
-                                onClose={(e) => setOpen(false)}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                            >
-                                <MenuItem to='/profile'>Profile</MenuItem>
-                                <MenuItem to='/'>MainPage</MenuItem>
-                                <MenuItem to='/logout'>Logout</MenuItem>
-                            </Menu>
-                        </>
-                        :
-                        <>
-                            <Link to='/registration' style={{textDecoration: 'none'}}>
-                                <Button variant="outlined" sx={{color: 'white', backgroundColor: '#FFB703'}}>Sign
-                                    Up</Button>
+                    {user? 
+                    <>
+                    <Avatar sx={{width:35, height:35}} src='#'/>
+                        <MenuIcon onClick={(e) => setOpen(true)} />
+                        <Menu
+                            id="demo-positioned-menu"
+                            aria-labelledby="demo-positioned-button"
+                            open={open}
+                            onClose={(e) => setOpen(false)}
+                            anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                            }}
+                            transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'right',
+                            }}
+                        >
+                            <MenuItem >
+                              <Link to='/userprofile'>Profile</Link>
+                              </MenuItem>
+                            <MenuItem >My account</MenuItem>
+                            <MenuItem >Logout</MenuItem>
+                        </Menu>
+                    </>
+                         : 
+                         <>
+                         <Link to='/registration' style={{ textDecoration: 'none' }}>
+                            <Button variant="outlined" sx={{color: 'white', backgroundColor: '#FFB703'}}>Sign Up</Button>
+
                             </Link>
                             <Link to='/auth' style={{textDecoration: 'none'}}>
                                 <Button sx={{color: "white"}}>Sign In</Button>
