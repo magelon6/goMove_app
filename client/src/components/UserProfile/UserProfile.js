@@ -1,18 +1,25 @@
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Box, Button, Container, CssBaseline, Grid, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import './UserProfile.css'
+import { getUserData, updateUser } from "../../redux/actions/profileAction";
 
 const theme = createTheme();
 
 function UserProfile() {
+  const id = useParams();
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const userData = useSelector((store) => store.user);
   const [inputs, setInputs] = useState({ ...userData });
+
+  useEffect(() => {
+    dispatch(getUserData(id));
+  }, []);
 
   const handleChange = (e) => {
     if (e.target.files) {
@@ -28,7 +35,7 @@ function UserProfile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch()
+    dispatch(updateUser(inputs, id))
   }
 
   return ( 
@@ -43,19 +50,16 @@ function UserProfile() {
                         alignItems: 'center',
                     }}
         >
-             <Typography component="h1" variant="h5">
-                        My Profile
-            </Typography>
-          <div className='UserProfile__container'>
-
-         
+                      <Typography component="h1" variant="h5">
+                                  My Profile
+                      </Typography>
+                     <div className='UserProfile__container'>
                       <div className="container col-md-4 mb-3 my-3">
                               <div className="card">
                                 <div className="d-flex flex-column align-items-center text-center my-3">
                                   <img src={inputs.photo ? `http://localhost:5001/img/${userData.photo}` : 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png'} alt="profilephoto" className="rounded" width="350" />
                                   <div className="my-3">
                                     <h4>
-                                     
                                       {inputs.name}
                                     </h4>
                                     <input
@@ -80,7 +84,7 @@ function UserProfile() {
                                     name="name"
                                     autoComplete="name"
                                     onChange={(e) => setName(e.target.value)}
-                                    value={name}
+                                    value={inputs.name}
                                 />
                             </Grid>
                             <Grid item xs={8}>
@@ -92,7 +96,7 @@ function UserProfile() {
                                     name="email"
                                     autoComplete="email"
                                     onChange={(e) => setEmail(e.target.value)}
-                                    value={email}
+                                    value={inputs.email}
                                 />
                             </Grid>
                             <Grid item xs={8}>
@@ -105,13 +109,12 @@ function UserProfile() {
                                     id="password"
                                     autoComplete="new-password"
                                     onChange={(e) => setPassword(e.target.value)}
-                                    value={password}
+                                    value={inputs.password}
                                 />
                             </Grid>
                         </Grid>
                         <Button
                             type="submit"
-                            //fullWidth
                             variant="contained"
                             sx={{mt: 3, mb: 2}}
                         >
