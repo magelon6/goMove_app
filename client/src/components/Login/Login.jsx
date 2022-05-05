@@ -11,8 +11,10 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {THUNK_ACTION_LOGIN} from "../../redux/thunk/thunkAuth";
+import $api from "../../http";
+import {useNavigate} from "react-router-dom";
 
 const theme = createTheme();
 
@@ -21,16 +23,19 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const user = useSelector(state => state.user);
+    let navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const request = await $api.post('/login', {email, password});
-
+        if (!request.data.user) {
+            setError({message: request.data.message});
+            navigate('/auth')
+        } else {
+            navigate('/');
+        }
         await dispatch(THUNK_ACTION_LOGIN({email, password}));
-        console.log(user)
     }
-
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">

@@ -55,22 +55,22 @@ class UserService {
     async login(email, password) {
         console.log(email, password);
         const user = await User.findOne({where: {email}});
+        if (!user) {
+            throw ApiError.badRequestError('User not found');
+        }
+        if (!user.isActivated) {
+            throw ApiError.badRequestError('User not activated, please check your email');
+        }
+        const isValid = await bcrypt.compare(password, user.password);
+        if (!isValid) {
+            throw ApiError.badRequestError('Invalid password');
+        }
         const userFront = {
             id: user.id,
             name: user.name,
             email: user.email,
             isActivated: user.isActivated,
         };
-        if (!user) {
-            throw ApiError.badRequestError('User not found');
-        }
-        if (!user.isActivated) {
-            throw ApiError.badRequestError('User not activated');
-        }
-        const isValid = await bcrypt.compare(password, user.password);
-        if (!isValid) {
-            throw ApiError.badRequestError('Invalid password');
-        }
         const tokens = await tokenService.generateTokens({...userFront});
         await tokenService.saveToken(user, tokens.refreshToken);
         return {...tokens, userFront};
@@ -111,6 +111,7 @@ class UserService {
         }
         return user;
     }
+
     async getUser(id) {
         const user = await User.findOne({where: {id}});
         if (!user) {
@@ -118,6 +119,7 @@ class UserService {
         }
         return user;
     }
+
     async updateUser(userId, name, email, photo) {
         const userFromDb = await User.findOne({where: {id}});
         if (!userFromDb) {
