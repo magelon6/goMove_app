@@ -4,7 +4,8 @@ import {getUser} from "../actions/userActions";
 export const THUNK_ACTION_REGISTER = (userData) => async (dispatch) => {
     try {
         const response = await AuthService.registration(userData);
-        dispatch(getUser(response.data.userFront));
+        console.log('THUNK', response);
+        dispatch(getUser(response.data.user));
     } catch (error) {
         console.log(error);
     }
