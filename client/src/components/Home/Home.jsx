@@ -13,7 +13,7 @@ import backgroundImg from '../../images/background.jpg'
 
 const divStyle = {
     height: '100vh',
-    maxHeight: '840px',
+    // maxHeight: '840px',
     position: 'relative',
     transition: 'height 99999s',
     backgroundImage: `url(${backgroundImg})`,

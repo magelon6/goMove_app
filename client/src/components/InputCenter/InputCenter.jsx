@@ -40,7 +40,7 @@ function InputCenter() {
                 disablePortal
                 id="combo-box-demo"
                 options={slice}
-                sx={{width: 300}}
+                sx={{width: 300, marginRight: '20px'}}
                 renderInput={(params) => <TextField sx={{background: 'white'}} {...params} label="City"/>}
                 onChange={(e) => setData(e.target.innerText)}
 
