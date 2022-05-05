@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {useState} from 'react';
 import {Box, Button, Container, CssBaseline, Grid, Link, TextField, Typography} from '@mui/material'
+import MarkEmailReadOutlinedIcon from '@mui/icons-material/MarkEmailReadOutlined';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {useDispatch} from "react-redux";
 import {THUNK_ACTION_REGISTER} from "../../redux/thunk/thunkRegistration";
@@ -27,7 +28,7 @@ export default function Registration() {
         }
         try {
             const request = await axios.post(BASE_URL, {name, email, password});
-            console.log(request);
+            //checking if user is registered
             if (request.data.user) {
                 setSuccess(true);
             } else {
@@ -39,7 +40,6 @@ export default function Registration() {
         }
         dispatch(THUNK_ACTION_REGISTER({name, email, password}));
     }
-
 
     return (
         <>
@@ -59,6 +59,7 @@ export default function Registration() {
                                 <Typography variant="h4" gutterBottom>
                                     Thank you for registration!
                                 </Typography>
+                                <MarkEmailReadOutlinedIcon/>
                                 <Typography variant="body1" component={'span'} gutterBottom>
                                     <p>
                                         Please check your email to confirm your account. If you don't see the email,
@@ -103,7 +104,7 @@ export default function Registration() {
                                         <TextField
                                             fullWidth
                                             id="name"
-                                            label="User Name"
+                                            label="UserName"
                                             name="name"
                                             autoComplete="name"
                                             onChange={(e) => {
