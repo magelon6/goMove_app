@@ -16,49 +16,34 @@ function App() {
 
     useEffect(() => {
         (localStorage.getItem('token') !== false) && dispatch(THUNK_checkAuth())
-        return () => {
-            isUser.user.token && localStorage.setItem('token', isUser.user.token)
-        }
     }, [dispatch]);
 
-    if (isUser) {
-        return (
-            <div className="App">
-                <NavBar/>
-                <Routes>
-                    <Route path='/' element={<Home/>}/>
-                    <Route path='/profile' element={<UserProfile/>}/>
-                    <Route path='*' element={<Navigate to='/' replace/>}/>
-                </Routes>
-
-            </div>
-        );
-    }
+    if (isUser) {   
+      return (
+          <div className="App">
+              <NavBar/>
+              <Routes>
+                  <Route path='/' element={<Home/>}/>
+                  <Route path='/userprofile' element={<UserProfile/>}/>
+                  <Route path='*' element={<Navigate to='/' replace/>}/>
+              </Routes>
+  
+          </div>
+      );
+    } 
     return (
-        <div className="App">
-            <NavBar/>
-            <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/userprofile' element={<UserProfile/>}/>
-                <Route path='*' element={<Navigate to='/' replace/>}/>
-            </Routes>
-
-        </div>
-    );
-  } 
-  return (
-    <div className="App">
-        <NavBar/>
-        <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/auth' element={<Login/>}/>
-            <Route path='/userprofile' element={<UserProfile/>}/>
-            <Route path='/registration' element={<Registration />} />
-            <Route path='*' element={<Navigate to='/' replace/>}/>
-        </Routes>
-
-    </div>
-);
+      <div className="App">
+          <NavBar/>
+          <Routes>
+              <Route path='/' element={<Home/>}/>
+              <Route path='/auth' element={<Login/>}/>
+              <Route path='/userprofile' element={<UserProfile/>}/>
+              <Route path='/registration' element={<Registration />} />
+              <Route path='*' element={<Navigate to='/' replace/>}/>
+          </Routes>
+  
+      </div>
+  );
 
 }
 
