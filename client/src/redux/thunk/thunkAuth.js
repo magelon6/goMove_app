@@ -1,5 +1,5 @@
 import AuthService from "../../services/AuthService";
-import {getUser, isAuth} from "../actions/userActions";
+import {getUser, isAuth, isNotAuth} from "../actions/userActions";
 import {API_URL} from "../../http";
 import axios from "axios";
 
@@ -11,7 +11,16 @@ export const THUNK_ACTION_LOGIN = (userData) => async (dispatch) => {
         console.log(error);
     }
 };
-
+export const THUNK_ACTION_LOGOUT = () => async (dispatch) => {
+    try {
+        await AuthService.logout();
+        dispatch(isNotAuth());
+    } catch (e) {
+        console.log(e);
+    } finally {
+        window.location.href = "/";
+    }
+}
 
 export const THUNK_checkAuth = () => async (dispatch) => {
     try {
