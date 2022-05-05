@@ -77,7 +77,9 @@ const NavBar = () => {
                             horizontal: 'right',
                             }}
                         >
-                            <MenuItem >Profile</MenuItem>
+                            <MenuItem >
+                              <Link to='/userprofile'>Profile</Link>
+                              </MenuItem>
                             <MenuItem >My account</MenuItem>
                             <MenuItem >Logout</MenuItem>
                         </Menu>
