@@ -20,11 +20,14 @@ function Login() {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const user = useSelector(state => state.user);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(THUNK_ACTION_LOGIN({email, password}));
+        const request = await $api.post('/login', {email, password});
+
+        await dispatch(THUNK_ACTION_LOGIN({email, password}));
         console.log(user)
     }
 
@@ -42,6 +45,7 @@ function Login() {
                 >
                     <Typography component="h1" variant="h5">
                         Login
+                        {error && <Typography variant="body2" color="error">{error.message}</Typography>}
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
                         <TextField

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {useState} from 'react';
 import {Box, Button, Container, CssBaseline, Grid, Link, TextField, Typography} from '@mui/material'
+import MarkEmailReadOutlinedIcon from '@mui/icons-material/MarkEmailReadOutlined';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {useDispatch} from "react-redux";
 import {THUNK_ACTION_REGISTER} from "../../redux/thunk/thunkRegistration";
@@ -58,6 +59,7 @@ export default function Registration() {
                                 <Typography variant="h4" gutterBottom>
                                     Thank you for registration!
                                 </Typography>
+                                <MarkEmailReadOutlinedIcon/>
                                 <Typography variant="body1" component={'span'} gutterBottom>
                                     <p>
                                         Please check your email to confirm your account. If you don't see the email,
@@ -70,7 +72,7 @@ export default function Registration() {
                                         features may be disabled.
                                     </p>
                                 </Typography>
-                                <Link to="/auth">
+                                <Link href="/auth">
                                     <Button variant="contained" color="primary" size="large">
                                         Login
                                     </Button>
@@ -179,7 +181,7 @@ export default function Registration() {
                                 <Grid container justifyContent="flex-end">
                                     <Grid item>
                                         <span>Already have an account? </span>
-                                        <Link to='/auth' variant="body2">
+                                        <Link href='/auth' variant="body2">
                                             Sign-In
                                         </Link>
                                     </Grid>
