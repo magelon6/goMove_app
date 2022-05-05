@@ -28,7 +28,7 @@ export const THUNK_checkAuth = () => async (dispatch) => {
             withCredentials: true,
         })
         localStorage.setItem('token', response.data.accessToken)
-        dispatch(getUser({user: response.data.userFront}))
+        dispatch(getUser(response.data.userFront))
         dispatch(isAuth());
     } catch (e) {
         console.log(e)
