@@ -9,9 +9,6 @@ import UserProfile from './components/UserProfile/UserProfile';
 import { useSelector } from 'react-redux';
 
 
-import Chart from './components/Chart/Chart';
-import Chart2 from './components/Chart/Chart';
-
 
 function App() {
     const isUser = useSelector(state=> state.user)
@@ -22,10 +19,8 @@ function App() {
         if (THUNK_checkAuth()) {
             setLoggedIn(true);
             setUser(THUNK_checkAuth.user);
-            console.log('logged in');
             return true;
         } else {
-            console.log('not logged in');
             return false;
         }
     }

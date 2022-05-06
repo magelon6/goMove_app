@@ -3,7 +3,7 @@ import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS } from 'chart.js/auto'
 import { useSelector } from "react-redux";
 
-const Chart1 = () => {
+const Chart2 = () => {
   const price = useSelector((state => state.price))
   const price2 = useSelector((state => state.price2))
   const city1 = useSelector((state) => state.lineFrontCity)
@@ -12,18 +12,18 @@ const Chart1 = () => {
   
 
   const barChartData = {
-    labels: price.slice(7, 16).map((el) => el.name),
+    labels: price.slice(16, 23).map((el) => el.name),
 
     datasets: [
       {
-        data: price.slice(7,16).map((el) => el.price),
+        data: price.slice(16,23).map((el) => el.price),
         label: city1.city1,
         borderColor: "#3333ff",
         backgroundColor: "rgba(0, 0, 255, 0.5)",
         fill: true
       },
       {
-        data: price2.slice(7,16).map((el) => el.price),
+        data: price2.slice(16,23).map((el) => el.price),
         label: city2.city2,
         borderColor: "#ff3333",
         backgroundColor: "rgba(255, 0, 0, 0.5)",
@@ -41,7 +41,7 @@ const Chart1 = () => {
         plugins: {
             title: {
                 display: true,
-                text: ' Markets prices, $ ',
+                text: ' Transportation, $ ',
                 font: {
                   size:20
                 }
@@ -56,4 +56,4 @@ const Chart1 = () => {
   return barChart;
 };
 
-export default Chart1;
+export default Chart2;

@@ -10,6 +10,7 @@ import Chart from '../Chart/Chart'
 import Chart1 from '../SecondChart/SecondChart'
 
 import backgroundImg from '../../images/background.jpg'
+import Chart2 from '../thirdChart/thirdChart'
 
 const divStyle = {
     height: '100vh',
@@ -32,7 +33,6 @@ function Home() {
     }, [])
 
     useEffect(() => {
-        console.log('111111111' , price);
         setChart(!!price.length)
       }, [price])
 
@@ -66,6 +66,7 @@ function Home() {
             <>
             <Chart/>
             <Chart1/>
+            <Chart2/>
             </>
             }
         </div>

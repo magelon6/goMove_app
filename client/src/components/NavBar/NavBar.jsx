@@ -4,6 +4,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import logoSvg from '../../images/logo_transparent.png'
+import Currency from '../Currency/Currency';
+import { cyan } from '@mui/material/colors';
+
 
 const StyledToolbar = styled(Toolbar)({
     display:"flex",
@@ -43,6 +46,7 @@ const NavBar = () => {
     }
 
     return (
+   
         <AppBar position='sticky' sx={{backgroundColor: '#023047'}} elevation={0}>
             <StyledToolbar >
                 <Typography variant='h6'>
@@ -90,6 +94,7 @@ const NavBar = () => {
                             <Link to='/auth' style={{ textDecoration: 'none' }}>
                             <Button sx={{color: "white"}}>Sign In</Button>
                         </Link>
+                        <Currency/>
                          </>
                          
                     }
