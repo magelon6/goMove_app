@@ -11,8 +11,10 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {THUNK_ACTION_LOGIN} from "../../redux/thunk/thunkAuth";
+import $api from "../../http";
+import {useNavigate} from "react-router-dom";
 
 const theme = createTheme();
 
@@ -20,14 +22,20 @@ function Login() {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const user = useSelector(state => state.user);
+    const [error, setError] = useState('');
+    let navigate = useNavigate()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(THUNK_ACTION_LOGIN({email, password}));
-        console.log(user)
+        const request = await $api.post('/login', {email, password});
+        if (!request.data.user) {
+            setError({message: request.data.message});
+            navigate('/auth')
+        } else {
+            navigate('/');
+        }
+        await dispatch(THUNK_ACTION_LOGIN({email, password}));
     }
-
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
@@ -42,6 +50,7 @@ function Login() {
                 >
                     <Typography component="h1" variant="h5">
                         Login
+                        {error && <Typography variant="body2" color="error">{error.message}</Typography>}
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{mt: 1}}>
                         <TextField

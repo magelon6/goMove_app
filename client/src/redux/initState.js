@@ -3,6 +3,6 @@ export const initState = {
     user: null,
     price: [],
     price2: [],
-    
+    currency: [],
     lineFrontCity: {},
 }

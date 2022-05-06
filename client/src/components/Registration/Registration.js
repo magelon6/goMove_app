@@ -1,9 +1,13 @@
 import * as React from 'react';
 import {useState} from 'react';
 import {Box, Button, Container, CssBaseline, Grid, Link, TextField, Typography} from '@mui/material'
+import MarkEmailReadOutlinedIcon from '@mui/icons-material/MarkEmailReadOutlined';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {THUNK_ACTION_REGISTER} from "../../redux/thunk/thunkRegistration";
+import axios from "axios";
+
+const BASE_URL = 'http://localhost:5001/api/registration';
 
 const theme = createTheme();
 
@@ -22,10 +26,20 @@ export default function Registration() {
             setError({message: 'Please fill all fields correctly'});
             return;
         }
-        setSuccess(true);
+        try {
+            const request = await axios.post(BASE_URL, {name, email, password});
+            //checking if user is registered
+            if (request.data.user) {
+                setSuccess(true);
+            } else {
+                setError({message: request.data.message});
+                setSuccess(false);
+            }
+        } catch (e) {
+            console.log(e)
+        }
         dispatch(THUNK_ACTION_REGISTER({name, email, password}));
     }
-
 
     return (
         <>
@@ -45,14 +59,17 @@ export default function Registration() {
                                 <Typography variant="h4" gutterBottom>
                                     Thank you for registration!
                                 </Typography>
-                                <Typography variant="body1" gutterBottom>
+                                <MarkEmailReadOutlinedIcon/>
+                                <Typography variant="body1" component={'span'} gutterBottom>
                                     <p>
                                         Please check your email to confirm your account. If you don't see the email,
                                         check your spam folder.
                                         You can also check your email later. If you still don't see the email, please <a
                                         href="mailto:a@artka.dev"> contact us.</a>
-                                            You can login to your account before you confirm your email, but some
-                                            features may be disabled.
+                                    </p>
+                                    <p>
+                                        You can login to your account before you confirm your email, but some
+                                        features may be disabled.
                                     </p>
                                 </Typography>
                                 <Link href="/auth">
@@ -79,6 +96,7 @@ export default function Registration() {
                         >
                             <Typography component="h1" variant="h5">
                                 Registration
+                                {error && <Typography variant="body2" color="error">{error.message}</Typography>}
                             </Typography>
                             <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 3}}>
                                 <Grid container spacing={2}>
@@ -86,7 +104,7 @@ export default function Registration() {
                                         <TextField
                                             fullWidth
                                             id="name"
-                                            label="User Name"
+                                            label="UserName"
                                             name="name"
                                             autoComplete="name"
                                             onChange={(e) => {
@@ -118,7 +136,6 @@ export default function Registration() {
                                                 ).test(e.target.value);
                                                 if (!reg) {
                                                     setError({email: 'Email is not valid, please enter a valid email'});
-                                                    console.log(error.email);
                                                 }
                                             }}
                                             value={email}

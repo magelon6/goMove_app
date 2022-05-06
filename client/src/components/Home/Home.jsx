@@ -10,6 +10,7 @@ import Chart from '../Chart/Chart'
 import Chart1 from '../SecondChart/SecondChart'
 
 import backgroundImg from '../../images/background.jpg'
+import Chart2 from '../thirdChart/thirdChart'
 
 const divStyle = {
     height: '100vh',
@@ -32,25 +33,41 @@ function Home() {
     }, [])
 
     useEffect(() => {
-        console.log('111111111' , price);
         setChart(!!price.length)
-      }, [price])
+    }, [price])
 
     return (
         <>
-        <div style={divStyle}>
-            {/* <h1>Some text</h1> */}
-            <div className='input-wrapper' style={{ display: 'flex', flexDirection: 'column', height: '100%', textAlign: 'center', width: '100%'}}>
-                <div style={{display: 'flex',  justifyContent: 'center', marginTop: '25vh'}}>
-                    <InputCenter/>
+            <div style={divStyle}>
+                {/* <h1>Some text</h1> */}
+                <div className='input-wrapper' style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%',
+                    textAlign: 'center',
+                    width: '100%'
+                }}>
+                    <div style={{display: 'flex', justifyContent: 'center', marginTop: '25vh'}}>
+                        <InputCenter/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div style={{margin: 30}}>
-            <Grid container>
-                <Grid item xs={12} sm={6} md={3}>
-                    <StaticGraph/>
+            <div style={{margin: 30}}>
+                <Grid container>
+                    <Grid item xs={12} sm={6} md={3}>
+                        <StaticGraph/>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={3}>
+                        <StaticGraph/>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={3}>
+                        <StaticGraph/>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={3}>
+                        <StaticGraph/>
+                    </Grid>
                 </Grid>
+
                 <Grid item xs={12} sm={6} md={3}>
                     <StaticGraph/>
                 </Grid>
@@ -66,6 +83,7 @@ function Home() {
             <>
             <Chart/>
             <Chart1/>
+            <Chart2/>
             </>
             }
         </div>
