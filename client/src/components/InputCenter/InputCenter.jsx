@@ -1,8 +1,8 @@
-import {Autocomplete, Button, TextField} from '@mui/material'
-import React, {useEffect, useState} from 'react'
+import {Autocomplete, Button, createFilterOptions, TextField} from '@mui/material'
+import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import { getlineFrontCity } from '../../redux/actions/lineFrontCityAction'
 import {getPriceFromDB, getPriceFromDB2} from '../../redux/thunk/thunkPrice'
+import {getlineFrontCity} from "../../redux/actions/lineFrontCityAction";
 
 
 
@@ -15,9 +15,10 @@ function InputCenter() {
     const [data2, setData2] = useState("")
 
     const dispatch = useDispatch()
-    useEffect(()=> {
-      setSlice(city.map(el => ({label: `${el.city}, ${el.country}`})))
-    }, [city])
+
+    // const slice = city.map(el => ({id: el.id, label: `${el.city}, ${el.country}`}))
+
+
 
     const searchCity = () => {
         let new1 = data.split(',')
@@ -56,47 +57,75 @@ function InputCenter() {
         const city2 = data2.split(', ')[0];
        
         const objInRedux = {
-          city1,
-          city2,
+            city1,
+            city2,
         }
-
-        dispatch(getlineFrontCity(objInRedux))
+        dispatch(getlineFrontCity(objInRedux));
     }
+
+    const OPTIONS_LIMIT = 10;
+    const defaultFilterOptions = createFilterOptions();
+
+    const filterOptions = (options, state) => {
+        return defaultFilterOptions(options, state).slice(0, OPTIONS_LIMIT);
+    };
+
 
     return (
         <>
             <Autocomplete
-                disablePortal
-                id="combo-box-demo"             
-                options={slice}
-                sx={{width: 300}}
-                renderInput={(params) => <TextField sx={{background: 'white'}} {...params} label="City"/>}
+                filterOptions={filterOptions}
+                selectOnFocus={true}
+                id="select-on-focus"
+                options={city}
+                sx={{width: 400, marginRight: 5}}
+                isOptionEqualToValue={(option, value) => option.id === value.id}
+                renderInput={(params) =>
+                    <TextField
+                        sx={{background: 'white', borderRadius: 5}}
+                        {...params}
+                        label="City"
+                        placeholder="Please type city"
+                        variant="outlined"
+
+                    />}
                 onChange={(e) => setData(e.target.innerText)}
-                
-                />
-          <Autocomplete
-            disablePortal
-            id="combo-box-demo"
-            options={slice}
-            sx={{width: 300}}
-            renderInput={(params) => <TextField sx={{background: 'white'}} {...params} label="City"/>}
-            onChange={(e) => setData2(e.target.innerText)}
+
             />
-        <Button onClick={searchCity} variant="contained" sx={{background: '#FFB703', marginLeft: '20px'}}>
-          Find city
-        </Button>
-          
+            <Autocomplete
+                filterOptions={filterOptions}
+                selectOnFocus={true}
+                id="select-on-focus"
+                options={city}
+                sx={{width: 400, marginRight: 5}}
+                isOptionEqualToValue={(option, value) => option.id === value.id}
+                renderInput={(params) =>
+                    <TextField
+                        sx={{background: 'white', borderRadius: 5}}
+                        {...params}
+                        label="City"
+                        placeholder="Please type city"
+                        variant="outlined"
+
+                    />}
+                onChange={(e) => setData2(e.target.innerText)}
+
+            />
+            <Button onClick={searchCity} variant="contained" sx={{background: '#FFB703', marginLeft: '20px'}}>
+                Find city
+            </Button>
 
 
-        {/* {chart
+            {/* {chart
+
             &&
             <>
             <Chart/>
             <Chart1/>
             </>
             } */}
-      </>
-  )
+        </>
+    )
 }
 
 export default InputCenter

@@ -87,13 +87,11 @@ class UserService {
             throw ApiError.UnauthorizedError(401, 'Refresh token is required');
         }
         const userData = await tokenService.validateRefreshToken(refreshToken);
-
         const tokenFromDb = await tokenService.findToken(refreshToken);
         if (!userData || !tokenFromDb) {
             throw ApiError.UnauthorizedError(401, 'Renew token required');
         }
         const userId = userData.id;
-        console.log(userId);
         const user = await User.findOne({where: {id: userId}});
         const userFront = {
             id: user.id,
