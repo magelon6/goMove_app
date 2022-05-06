@@ -21,6 +21,7 @@ router.get('/city', apiData.home);
 router.post('/price', apiData.price);
 router.get('/userprofile/:id', userController.getUserProfile);
 router.post('/userprofile/:id', userController.updateUserProfile);
+router.get('/currency', apiData.currency);
 
 // router.post('/userprofile/:id/avatar', userController.updateUserAvatar);
 

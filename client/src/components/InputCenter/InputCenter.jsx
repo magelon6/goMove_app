@@ -5,33 +5,57 @@ import {getPriceFromDB, getPriceFromDB2} from '../../redux/thunk/thunkPrice'
 import {getlineFrontCity} from "../../redux/actions/lineFrontCityAction";
 
 
-function InputCenter() {
 
+
+function InputCenter() {
+  
     const city = useSelector((state) => state.city)
+    const [slice, setSlice] = useState([])
     const [data, setData] = useState("")
     const [data2, setData2] = useState("")
-
-
-    const price = useSelector((state) => state.price)
-    // const [chart, setChart] = useState(price)
 
     const dispatch = useDispatch()
 
     // const slice = city.map(el => ({id: el.id, label: `${el.city}, ${el.country}`}))
 
 
+
     const searchCity = () => {
         let new1 = data.split(',')
-        let new2 = {city: new1[0], country: new1[1]}
-        let new3 = data2.split(',')
-        let new4 = {city: new3[0], country: new3[1]}
+        let cityFirst;
+        let country;
+        if ( new1.length >= 3 ) {
+          cityFirst = `${new1[0]},${new1[1]}`
+        country= new1[2]
+      } else {
+        cityFirst = new1[0]
+        country= new1[1]
+      }
+      let new2 = {city: cityFirst, country }
+
+      let new3 = data2.split(',')
+      let cityFirst1;
+      let country1;
+      if ( new3.length >= 3 ) {
+        cityFirst1 = `${new3[0]},${new3[1]}`
+      country1= new3[2]
+    } else {
+      cityFirst1 = new3[0]
+      country1= new3[1]
+    }
+      
+      
+      
+      
+
+      let new4 = {city: cityFirst1, country: country1}
 
         dispatch(getPriceFromDB(new2))
         dispatch(getPriceFromDB2(new4))
-// console.log(typeof data2.split(', ')[0]);
+
         const city1 = data.split(', ')[0];
         const city2 = data2.split(', ')[0];
-        console.log(city1);
+       
         const objInRedux = {
             city1,
             city2,
@@ -45,6 +69,7 @@ function InputCenter() {
     const filterOptions = (options, state) => {
         return defaultFilterOptions(options, state).slice(0, OPTIONS_LIMIT);
     };
+
 
     return (
         <>
@@ -92,6 +117,7 @@ function InputCenter() {
 
 
             {/* {chart
+
             &&
             <>
             <Chart/>
