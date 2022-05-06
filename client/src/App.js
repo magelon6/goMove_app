@@ -1,47 +1,50 @@
-import {Route, Routes} from 'react-router-dom';
-import React, {useEffect, useState} from 'react';
+import {Navigate, Route, Routes} from 'react-router-dom';
+import React, {useEffect} from 'react';
 import Home from './components/Home/Home';
 import NavBar from "./components/NavBar/NavBar";
 import Registration from './components/Registration/Registration';
 import Login from "./components/Login/Login";
-import {THUNK_checkAuth} from "./redux/thunk/thunkAuth";
 import UserProfile from './components/UserProfile/UserProfile';
-
-import Chart from './components/Chart/Chart';
-import Chart2 from './components/Chart/Chart';
+import {useDispatch, useSelector} from 'react-redux';
+import {THUNK_checkAuth} from "./redux/thunk/thunkAuth";
 
 
 function App() {
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [user, setUser] = useState();
-    const verify = () => {
-        if (THUNK_checkAuth()) {
-            setLoggedIn(true);
-            setUser(THUNK_checkAuth.user);
-            console.log('logged in');
-            return true;
-        } else {
-            console.log('not logged in');
-            return false;
-        }
-    }
+    const isUser = useSelector(state => state.user)
+    const dispatch = useDispatch();
+    console.log(isUser, "isUser")
 
     useEffect(() => {
-        verify()
-    }, [loggedIn]);
+        (localStorage.getItem('token') !== false) && dispatch(THUNK_checkAuth())
+    }, [dispatch]);
 
-
+    if (isUser) {   
+      return (
+          <div className="App">
+              <NavBar/>
+              <Routes>
+                  <Route path='/' element={<Home/>}/>
+                  <Route path='/userprofile' element={<UserProfile/>}/>
+                  <Route path='*' element={<Navigate to='/' replace/>}/>
+              </Routes>
+  
+          </div>
+      );
+    } 
     return (
-        <div className="App">
-            <NavBar/>
-            <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/auth' element={<Login/>}/>
-                <Route path='/profile' element={<UserProfile/>}/>
-                <Route path='/registration' element={<Registration/>}/>
-            </Routes>
-        </div>
-    );
+      <div className="App">
+          <NavBar/>
+          <Routes>
+              <Route path='/' element={<Home/>}/>
+              <Route path='/auth' element={<Login/>}/>
+              <Route path='/userprofile' element={<UserProfile/>}/>
+              <Route path='/registration' element={<Registration />} />
+              <Route path='*' element={<Navigate to='/' replace/>}/>
+          </Routes>
+  
+      </div>
+  );
+
 }
 
 export default App;

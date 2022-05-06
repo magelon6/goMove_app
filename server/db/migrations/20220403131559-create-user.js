@@ -21,6 +21,10 @@ module.exports = {
                 type: Sequelize.STRING,
                 required: true,
             },
+            photo: {
+                type: Sequelize.STRING,
+                allowNull: true,
+            },
             isActivated: {
                 type: Sequelize.BOOLEAN,
                 defaultValue: false,
