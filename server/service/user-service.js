@@ -58,8 +58,28 @@ class UserService {
     if (!user) {
       throw ApiError.badRequestError('User not found');
     }
-    if (!user.isActivated) {
-      throw ApiError.badRequestError('User not activated, please check your email');
+
+    async refresh(refreshToken) {
+        if (!refreshToken) {
+            throw ApiError.UnauthorizedError(401, 'Refresh token is required');
+        }
+        const userData = await tokenService.validateRefreshToken(refreshToken);
+        const tokenFromDb = await tokenService.findToken(refreshToken);
+        if (!userData || !tokenFromDb) {
+            throw ApiError.UnauthorizedError(401, 'Renew token required');
+        }
+        const userId = userData.id;
+        const user = await User.findOne({where: {id: userId}});
+        const userFront = {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            photo: user.photo,
+            isActivated: user.isActivated,
+        };
+        const tokens = await tokenService.generateTokens({...userFront});
+        await tokenService.saveToken(user, tokens.refreshToken);
+        return {...tokens, userFront};
     }
     const isValid = await bcrypt.compare(password, user.password);
     if (!isValid) {
