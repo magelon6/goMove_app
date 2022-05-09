@@ -9,12 +9,9 @@ const theme = createTheme();
 
 function UserProfile() {
     const id = useSelector(state => state.user.id);
+    const city = useSelector(state => state.lineFrontCity);
     const dispatch = useDispatch();
-    // const [name, setName] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
     const userData = useSelector((store) => store.user);
-    // const [userData, setUserData] = useState({});
     const [inputs, setInputs] = useState({...userData});
 
     useEffect(() => {
@@ -37,19 +34,6 @@ function UserProfile() {
     e.preventDefault();
     dispatch(updateUser(inputs, id))
     }
-    //   const formData = new FormData();
-    //   formData.append('file', inputs.file ?? inputs.photo);
-    //   formData.append('userId', inputs.id);
-    //   formData.append('name', inputs.name);
-    //   formData.append('email', inputs.email);
-    //   fetch(`http://localhost:5001/api/userprofile/${id}`, {
-    //     method: 'PUT',
-    //     body: formData,
-    //   })
-    //     .then(res => { console.log(res); return res.json() })
-    //     .then(data => setUserData(data));
-    // }
-    // console.log(inputs, id);
 
     return (
         <ThemeProvider theme={theme}>
@@ -123,7 +107,10 @@ function UserProfile() {
                         </Box>
                     </div>
                 </Box>
-            </Container>
+        </Container>
+        <>
+          {Object.values(city).map((el) => <div>{el}</div>)}
+        </>
         </ThemeProvider>
     );
 }
