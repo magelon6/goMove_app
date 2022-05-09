@@ -12,6 +12,7 @@ import Chart1 from '../SecondChart/SecondChart'
 import backgroundImg from '../../images/background.jpg'
 import Chart2 from '../thirdChart/thirdChart'
 import Currency from "../Currency/Currency";
+import Header from "../Header/Header";
 
 const divStyle = {
     height: '100vh',
@@ -46,6 +47,7 @@ function Home() {
                     textAlign: 'center',
                     width: '100%'
                 }}>
+                    <Header/>
                     <div style={{display: 'flex', justifyContent: 'center', marginTop: '25vh'}}>
                         <InputCenter/>
                     </div>
