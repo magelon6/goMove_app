@@ -11,7 +11,8 @@ import Chart1 from '../SecondChart/SecondChart'
 
 import backgroundImg from '../../images/background.jpg'
 import Chart2 from '../thirdChart/thirdChart'
-import Currency from '../Currency/Currency'
+import Currency from "../Currency/Currency";
+import Header from "../Header/Header";
 
 const divStyle = {
     height: '100vh',
@@ -46,16 +47,8 @@ function Home() {
                     textAlign: 'center',
                     width: '100%'
                 }}>
-                    <div style={{
-                        marginTop: '5vh',
-                        color: 'white'
-                    }}>
-                        <h1>Compare Cities</h1>
-                        <br/>
-                        <h3>Here you can find informations including housing indicators,</h3>
-                        <h3>perceived crime rates, and quality of healthcare, and many other statistics.</h3>
-                    </div>
-                    <div style={{display: 'flex', justifyContent: 'center', marginTop: '10vh'}}>
+                    <Header/>
+                    <div style={{display: 'flex', justifyContent: 'center', marginTop: '25vh'}}>
                         <InputCenter/>
                     </div>
                 </div>
@@ -76,16 +69,16 @@ function Home() {
                     </Grid>
                 </Grid>
 
-            {chart
-            &&
-            <>
-            <Currency/>
-            <Chart/>
-            <Chart1/>
-            <Chart2/>
-            </>
-            }
-        </div>
+                {chart
+                    &&
+                    <>
+                        <Currency/>
+                        <Chart/>
+                        <Chart1/>
+                        <Chart2/>
+                    </>
+                }
+            </div>
         </>
 
     )
