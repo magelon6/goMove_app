@@ -17,7 +17,6 @@ function InputCenter() {
 
     const dispatch = useDispatch()
 
-    // const slice = city.map(el => ({id: el.id, label: `${el.city}, ${el.country}`}))
 
 
 
@@ -53,6 +52,7 @@ function InputCenter() {
 
         dispatch(getPriceFromDB(new2))
         dispatch(getPriceFromDB2(new4))
+        
 
         const city1 = data.split(', ')[0];
         const city2 = data2.split(', ')[0];
@@ -85,7 +85,6 @@ function InputCenter() {
                     <TextField
                         sx={{background: 'white', borderRadius: 5}}
                         {...params}
-                        label="City"
                         placeholder="Please type city"
                         variant="outlined"
 
@@ -104,7 +103,6 @@ function InputCenter() {
                     <TextField
                         sx={{background: 'white', borderRadius: 5}}
                         {...params}
-                        label="City"
                         placeholder="Please type city"
                         variant="outlined"
 
@@ -116,22 +114,12 @@ function InputCenter() {
             activateClass='active'
             to='section1'
             smooth={true}
-            delay={500}
+            delay={750}
             >
               <Button onClick={searchCity} variant="contained" sx={{background: '#FFB703', marginLeft: '20px'}}>
                   Find city
               </Button>
             </Link>
-
-
-            {/* {chart
-
-            &&
-            <>
-            <Chart/>
-            <Chart1/>
-            </>
-            } */}
         </>
     )
 }

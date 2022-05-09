@@ -68,6 +68,7 @@ class ApiData {
     }
   }
 
+
   async currency(req, res) {
     try {
       const currency = await axios(

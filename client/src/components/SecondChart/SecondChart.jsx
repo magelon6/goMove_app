@@ -1,9 +1,9 @@
 import React from "react";
-import {Bar} from "react-chartjs-2";
-import {useSelector} from "react-redux";
+import { Bar } from "react-chartjs-2";
+import { Chart as ChartJS } from 'chart.js/auto'
+import { useSelector } from "react-redux";
 
 const Chart1 = () => {
-
   const price = useSelector((state => state.price))
   const price2 = useSelector((state => state.price2))
   const city1 = useSelector((state) => state.lineFrontCity)
