@@ -21,17 +21,13 @@ function UserProfile() {
         dispatch(getUserData(id));
     }, []);
     
-  console.log(inputs, '111');
   const handleChange = (e) => {
-    console.log(e.target.files, '555');
-    console.log(inputs, '66');
         if (e.target.files) {
             setInputs((prev) => ({
                 ...prev,
                 [e.target.name]: e.target.value,
                 file: e.target.files[0],
             }));
-          console.log(inputs, '777');
         } else {
             setInputs((prev) => ({...prev, [e.target.name]: e.target.value}));
         }
@@ -39,7 +35,6 @@ function UserProfile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs, '000000');
     dispatch(updateUser(inputs, id))
     }
     //   const formData = new FormData();
@@ -69,7 +64,7 @@ function UserProfile() {
                     }}
                 >
                     <Typography component="h1" variant="h5">
-                        My Profile
+                       <h3>Personal account {inputs.name}</h3>
                     </Typography>
                     <div className='UserProfile__container'>
                         <div className="container col-md-4 mb-3 my-3">
@@ -79,10 +74,7 @@ function UserProfile() {
                                         src={inputs.photo ? `http://localhost:5001/img/${userData.photo}` :
                                             'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/b1/b12d371f6c55ed7306277b38b50f6642d13af030_full.jpg'}
                                         alt="profilephoto" className="rounded" width="350"/>
-                                    <div className="my-3">
-                                        <h4>
-                                            {inputs.name}
-                                        </h4>
+                                    <div className="my-3">                                    
                                         <input
                                             className="inputphoto input-file"
                                             id="file"
@@ -120,19 +112,6 @@ function UserProfile() {
                                         value={inputs.email}
                                     />
                                 </Grid>
-                                {/* <Grid item xs={8}>
-                                    <TextField
-                                        required
-                                        fullWidth
-                                        name="password"
-                                        label="Password"
-                                        type="password"
-                                        id="password"
-                                        autoComplete="new-password"
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        value={inputs.password}
-                                    />
-                                </Grid> */}
                             </Grid>
                             <Button
                                 type="submit"
