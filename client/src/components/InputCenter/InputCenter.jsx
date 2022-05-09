@@ -11,6 +11,7 @@ import { Link, animateScroll as scroll } from "react-scroll";
 function InputCenter() {
   
     const city = useSelector((state) => state.city)
+    const [slice, setSlice] = useState([])
     const [data, setData] = useState("")
     const [data2, setData2] = useState("")
 
@@ -76,7 +77,7 @@ function InputCenter() {
             <Autocomplete
                 filterOptions={filterOptions}
                 selectOnFocus={true}
-                id="select-on-focus"
+                id="select-on-focus-1"
                 options={city}
                 sx={{width: 400, marginRight: 5}}
                 isOptionEqualToValue={(option, value) => option.id === value.id}
@@ -84,8 +85,7 @@ function InputCenter() {
                     <TextField
                         sx={{background: 'white', borderRadius: 5}}
                         {...params}
-                        label="City"
-                        placeholder="Please type city"
+                        placeholder="From"
                         variant="outlined"
 
                     />}
@@ -95,7 +95,7 @@ function InputCenter() {
             <Autocomplete
                 filterOptions={filterOptions}
                 selectOnFocus={true}
-                id="select-on-focus"
+                id="select-on-focus-2"
                 options={city}
                 sx={{width: 400, marginRight: 5}}
                 isOptionEqualToValue={(option, value) => option.id === value.id}
@@ -103,8 +103,7 @@ function InputCenter() {
                     <TextField
                         sx={{background: 'white', borderRadius: 5}}
                         {...params}
-                        label="City"
-                        placeholder="Please type city"
+                        placeholder="To"
                         variant="outlined"
 
                     />}
@@ -115,15 +114,12 @@ function InputCenter() {
             activateClass='active'
             to='section1'
             smooth={true}
-            delay={500}
+            delay={750}
             >
-              <Button onClick={searchCity} variant="contained" sx={{background: '#FFB703', marginLeft: '20px'}}>
+              <Button onClick={searchCity} variant="contained" sx={{background: '#FFB703', marginLeft: '20px', marginTop: 1.2}}>
                   Find city
               </Button>
             </Link>
-
-
-          
         </>
     )
 }

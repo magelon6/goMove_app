@@ -17,31 +17,31 @@ function App() {
         (localStorage.getItem('token') !== false) && dispatch(THUNK_checkAuth())
     }, [dispatch]);
 
-    if (isUser) {   
-      return (
-          <div className="App">
-              <NavBar/>
-              <Routes>
-                  <Route path='/' element={<Home/>}/>
-                  <Route path='/userprofile' element={<UserProfile/>}/>
-                  <Route path='*' element={<Navigate to='/' replace/>}/>
-              </Routes>
-  
-          </div>
-      );
-    } 
+    if (isUser) {
+        return (
+            <div className="App">
+                <NavBar/>
+                <Routes>
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='/userprofile' element={<UserProfile/>}/>
+                    <Route path='*' element={<Navigate to='/' replace/>}/>
+                </Routes>
+
+            </div>
+        );
+    }
     return (
-      <div className="App">
-          <NavBar/>
-          <Routes>
-              <Route path='/' element={<Home/>}/>
-              <Route path='/auth' element={<Login/>}/>
-              <Route path='/registration' element={<Registration />} />
-              <Route path='*' element={<Navigate to='/' replace/>}/>
-          </Routes>
-  
-      </div>
-  );
+        <div className="App">
+            <NavBar/>
+            <Routes>
+                <Route path='/' element={<Home/>}/>
+                <Route path='/auth' element={<Login/>}/>
+                <Route path='/registration' element={<Registration/>}/>
+                <Route path='*' element={<Navigate to='/' replace/>}/>
+            </Routes>
+
+        </div>
+    );
 
 }
 
