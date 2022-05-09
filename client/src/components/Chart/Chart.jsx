@@ -54,6 +54,7 @@ const Chart = () => {
     />
   );
   return barChart;
+  // return <></>;
 };
 
 

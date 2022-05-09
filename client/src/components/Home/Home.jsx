@@ -14,7 +14,7 @@ import Chart2 from '../thirdChart/thirdChart'
 
 const divStyle = {
     height: '100vh',
-    maxHeight: '840px',
+    // maxHeight: '840px',
     position: 'relative',
     transition: 'height 99999s',
     backgroundImage: `url(${backgroundImg})`,
@@ -77,7 +77,7 @@ function Home() {
                 <Grid item xs={12} sm={6} md={3}>
                     <StaticGraph/>
                 </Grid>
-            </Grid>
+            {/* </Grid> */}
             {chart
             &&
             <>

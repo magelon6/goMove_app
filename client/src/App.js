@@ -12,7 +12,6 @@ import {THUNK_checkAuth} from "./redux/thunk/thunkAuth";
 function App() {
     const isUser = useSelector(state => state.user)
     const dispatch = useDispatch();
-    console.log(isUser, "isUser")
 
     useEffect(() => {
         (localStorage.getItem('token') !== false) && dispatch(THUNK_checkAuth())
@@ -37,7 +36,6 @@ function App() {
           <Routes>
               <Route path='/' element={<Home/>}/>
               <Route path='/auth' element={<Login/>}/>
-              <Route path='/userprofile' element={<UserProfile/>}/>
               <Route path='/registration' element={<Registration />} />
               <Route path='*' element={<Navigate to='/' replace/>}/>
           </Routes>
