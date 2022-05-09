@@ -1,6 +1,5 @@
 import {GET_USER, IS_AUTH, IS_NOT_AUTH, UNSET_USER} from "../types/User.types";
 
-
 export const getUser = (user) => {
     return {
         type: GET_USER,

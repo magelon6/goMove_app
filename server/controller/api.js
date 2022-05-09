@@ -15,7 +15,7 @@ class ApiData {
       const result = newResult.map((el) => ({
         id: el.city_id,
         city: el.city,
-        country: el.country,
+        label: `${el.city}, ${el.country}`
       }));
       res.json(result);
     } catch (err) {
@@ -27,6 +27,8 @@ class ApiData {
   async price(req, res) {
     try {
       const { city, country } = req.body;
+   
+   
       const response = await axios(
         `https://www.numbeo.com//api/city_prices?api_key=${process.env.API_KEY_NUM}&city=${city}&country=${country}`
       );
@@ -38,20 +40,52 @@ class ApiData {
       const usd = currency.data.exchange_rates.find(
         (el) => el.currency === response.data.currency
       );
-      const result = response.data.prices.map((el) => ({
-        id: el.item_id,
-        name: el.item_name,
-        price: (el.average_price / usd.one_usd_to_currency),
-      }));
+     
+      if (response.data.currency !== 'USD') {
+       
+        
+        const result = response.data.prices.map((el) => ({
+          id: el.item_id,
+          name: el.item_name,
+          price: Math.ceil(el.average_price / usd.one_usd_to_currency),
+          
+        }));
 
-      res.json(result);
+        res.json(result);
+      } else {
+        
+        const result = response.data.prices.map((el) => ({
+          id: el.item_id,
+          name: el.item_name,
+          price: Math.ceil(el.average_price),
+        }));
+        res.json(result);
+      }
+
     } catch (err) {
       console.log(err);
       res.sendStatus(400);
     }
   }
 
- 
+  async currency(req, res) {
+    try {
+      const currency = await axios(
+        `https://www.numbeo.com/api/currency_exchange_rates?api_key=${process.env.API_KEY_NUM}`
+      );
+
+     
+
+      const result = currency.data.exchange_rates.map((el) => ({
+        usd: el.one_usd_to_currency,
+        currency: el.currency,
+      }));
+      res.json(result);
+    } catch (err) {
+      console.log(err);
+      res.sendStatus(400);
+    }
+  }
 }
 
 module.exports = new ApiData();

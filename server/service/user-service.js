@@ -69,6 +69,7 @@ class UserService {
             id: user.id,
             name: user.name,
             email: user.email,
+            photo: user.photo,
             isActivated: user.isActivated,
         };
         const tokens = await tokenService.generateTokens({...userFront});
@@ -86,17 +87,17 @@ class UserService {
             throw ApiError.UnauthorizedError(401, 'Refresh token is required');
         }
         const userData = await tokenService.validateRefreshToken(refreshToken);
-
         const tokenFromDb = await tokenService.findToken(refreshToken);
         if (!userData || !tokenFromDb) {
             throw ApiError.UnauthorizedError(401, 'Renew token required');
         }
         const userId = userData.id;
-        console.log(userId);
         const user = await User.findOne({where: {id: userId}});
         const userFront = {
             id: user.id,
+            name: user.name,
             email: user.email,
+            photo: user.photo,
             isActivated: user.isActivated,
         };
         const tokens = await tokenService.generateTokens({...userFront});
@@ -114,10 +115,17 @@ class UserService {
 
     async getUser(id) {
         const user = await User.findOne({where: {id}});
+        const userFront = {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            photo: user.photo,
+            isActivated: user.isActivated,
+        };
         if (!user) {
             throw ApiError.badRequestError('User not found');
         }
-        return user;
+        return userFront;
     }
 
     async updateUser(userId, name, email, photo) {
