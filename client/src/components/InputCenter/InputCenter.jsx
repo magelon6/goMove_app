@@ -52,6 +52,7 @@ function InputCenter() {
 
         dispatch(getPriceFromDB(new2))
         dispatch(getPriceFromDB2(new4))
+        
 
         const city1 = data.split(', ')[0];
         const city2 = data2.split(', ')[0];
