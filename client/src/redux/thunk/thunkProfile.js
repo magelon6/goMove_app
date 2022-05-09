@@ -1,28 +1,24 @@
 import axios from 'axios';
-import { API_URL } from '../../http';
-import { SET_USER } from '../types/Profile.types';
-
-export const setUser = (user) => ({
-  type: SET_USER,
-  payload: user,
-});
+import { getUser } from '../actions/userActions';
 
 export const getUserData = (id) => async (dispatch) => {
-  axios.get(`${API_URL.getUser(id.id)}`)
-    .then((response) => dispatch(setUser(response.data)));
+  axios.get(`http://localhost:5001/api/userprofile/${id}`)
+    .then((response) => dispatch(getUser(response.data)));
 };
 
 export const updateUser = (inputs, id) => async (dispatch) => {
+  console.log(inputs.id, inputs.name, '222');
   const formData = new FormData();
-  // console.log(inputs);
+  console.log(formData, '=====================');
   formData.append('file', inputs.file ?? inputs.photo);
+  formData.append('userId', inputs.id);
   formData.append('name', inputs.name);
   formData.append('email', inputs.email);
-  await fetch(`${API_URL.updateUser(id.id)}`, {
+  await fetch(`http://localhost:5001/api/userprofile/${inputs.id}`, {
     method: 'PATCH',
     credentials: 'include',
     body: formData,
   })
     .then((response) => response.json())
-    .then((data) => dispatch(setUser(data)));
+    .then((data) => dispatch(getUser(data)));
 };
