@@ -7,11 +7,14 @@ import StaticGraph from '../StaticGraph/StaticGraph'
 import Grid from "@mui/material/Grid";
 
 import Chart from '../Chart/Chart'
-import Chart1 from '../SecondChart/SecondChart'
+
 
 import backgroundImg from '../../images/background.jpg'
-import Chart2 from '../thirdChart/thirdChart'
+import Chart2 from '../Chart2/Chart2'
 import Currency from '../Currency/Currency'
+
+import Chart4 from '../Chart4/Chart4'
+import Chart3 from '../Chart3/Chart3'
 
 const divStyle = {
     height: '100vh',
@@ -68,14 +71,14 @@ function Home() {
                         <StaticGraph/>
                     </Grid>
                 </Grid>
-
             {chart
             &&
             <>
             <Currency/>
             <Chart/>
-            <Chart1/>
             <Chart2/>
+            <Chart3/>
+            <Chart4/>
             </>
             }
         </div>
