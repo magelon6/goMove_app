@@ -10,9 +10,9 @@ const theme = createTheme();
 function UserProfile() {
     const id = useSelector(state => state.user.id);
     const dispatch = useDispatch();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    // const [name, setName] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
     const userData = useSelector((store) => store.user);
     // const [userData, setUserData] = useState({});
     const [inputs, setInputs] = useState({...userData});
