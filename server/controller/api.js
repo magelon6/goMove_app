@@ -23,7 +23,7 @@ class ApiData {
             res.sendStatus(400);
         }
     }
-  }
+  
 
   async price(req, res) {
     try {
@@ -87,7 +87,7 @@ class ApiData {
       res.sendStatus(400);
     }
 
-
+  }
 }
 
 module.exports = new ApiData();
