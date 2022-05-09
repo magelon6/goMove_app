@@ -1,27 +1,26 @@
 const axios = require("axios");
 
 class ApiData {
-    async home(req, res) {
-        try {
-            const response = await axios(
-                `https://www.numbeo.com/api/cities?api_key=${process.env.API_KEY_NUM}`
-            );
+  async home(req, res) {
+    try {
+      const response = await axios(
+        `https://www.numbeo.com/api/cities?api_key=${process.env.API_KEY_NUM}`
+      );
 
-            const newResult = response.data.cities.filter(
-                (el) =>
-                    el.city !== "Karaganda (Qaraghandy)" && el.city !== "Buon Ma Thuot"
-            );
+      const newResult = response.data.cities.filter(
+        (el) =>
+          el.city !== "Karaganda (Qaraghandy)" && el.city !== "Buon Ma Thuot"
+      );
 
-            const result = newResult.map((el) => ({
-                id: el.city_id,
-                city: el.city,
-                label: `${el.city}, ${el.country}`
-            }));
-            res.json(result);
-        } catch (err) {
-            console.log(err);
-            res.sendStatus(400);
-        }
+      const result = newResult.map((el) => ({
+        id: el.city_id,
+        city: el.city,
+        label: `${el.city}, ${el.country}`
+      }));
+      res.json(result);
+    } catch (err) {
+      console.log(err);
+      res.sendStatus(400);
     }
   
 
@@ -42,7 +41,7 @@ class ApiData {
         (el) => el.currency === response.data.currency
       );
      
-      if (response.data.currency !== 'USD'){
+      if (response.data.currency !== 'USD') {
        
         
         const result = response.data.prices.map((el) => ({
@@ -86,10 +85,7 @@ class ApiData {
       console.log(err);
       res.sendStatus(400);
     }
-
   }
 }
 
 module.exports = new ApiData();
-
-

@@ -115,10 +115,17 @@ class UserService {
 
     async getUser(id) {
         const user = await User.findOne({where: {id}});
+        const userFront = {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            photo: user.photo,
+            isActivated: user.isActivated,
+        };
         if (!user) {
             throw ApiError.badRequestError('User not found');
         }
-        return user;
+        return userFront;
     }
 
     async updateUser(userId, name, email, photo) {
