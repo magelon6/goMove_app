@@ -3,10 +3,8 @@ import {AppBar, Avatar, Box, Button, Menu, MenuItem, styled, Toolbar, Typography
 import MenuIcon from '@mui/icons-material/Menu';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import logoSvg from '../../images/logo_transparent.png'
-import Currency from '../Currency/Currency';
 import {THUNK_ACTION_LOGOUT} from "../../redux/thunk/thunkAuth";
-import { getUserData } from '../../redux/thunk/thunkProfile';
+import {images} from "../../images";
 
 const StyledToolbar = styled(Toolbar)({
     display: "flex",
@@ -49,7 +47,7 @@ const NavBar = () => {
             <StyledToolbar>
                 <Typography variant='h6'>
                     <Link to='/' style={{textDecoration: 'none', color: 'white'}}>
-                        <img src={logoSvg} style={{height: 50, marginTop: 10}} alt="SVG as an image"/>
+                        <img src={images.logomenu} style={{height: 50, marginTop: 10}} alt="SVG as an image"/>
                     </Link>
                 </Typography>
                 <Icons>
@@ -73,7 +71,7 @@ const NavBar = () => {
                                 }}
                             >
                                 <MenuItem>
-                                    <Link to='/userprofile' style={{ textDecoration: 'none' }}>Profile</Link>
+                                    <Link to='/userprofile' style={{textDecoration: 'none'}}>Profile</Link>
                                 </MenuItem>
                                 <MenuItem
                                     onClick={() => (dispatch(THUNK_ACTION_LOGOUT()))}
@@ -90,7 +88,7 @@ const NavBar = () => {
                             <Link to='/auth' style={{textDecoration: 'none'}}>
                                 <Button sx={{color: "white"}}>Sign In</Button>
                             </Link>
-                            <Currency/>
+                            {/*<Currency/>*/}
                         </>
 
 
