@@ -56,7 +56,7 @@ const NavBar = () => {
                     {/* Тут прописать условие авторизации пользователя */}
                     {user ?
                         <>
-                            <Avatar sx={{width: 35, height: 35}} src='#'/>
+                            <Avatar sx={{width: 35, height: 35}} src={`http://localhost:5001/img/${user.photo}`}/>
                             <MenuIcon onClick={(e) => setOpen(true)}/>
                             <Menu
                                 id="demo-positioned-menu"
