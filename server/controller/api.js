@@ -22,7 +22,7 @@ class ApiData {
       console.log(err);
       res.sendStatus(400);
     }
-  
+  }
 
   async price(req, res) {
     try {
@@ -67,6 +67,7 @@ class ApiData {
       res.sendStatus(400);
     }
   }
+
 
   async currency(req, res) {
     try {
