@@ -1,42 +1,60 @@
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {Box, Button, Container, CssBaseline, Grid, TextField, Typography} from "@mui/material";
 import React, {useEffect, useState} from "react";
-import {useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import './UserProfile.css'
-import {getUserData, updateUser} from "../../redux/actions/profileAction";
+import { getUserData, updateUser } from "../../redux/thunk/thunkProfile";
 
 const theme = createTheme();
 
 function UserProfile() {
-    const id = useParams();
+    const id = useSelector(state => state.user.id);
     const dispatch = useDispatch();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    // const [name, setName] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
     const userData = useSelector((store) => store.user);
+    // const [userData, setUserData] = useState({});
     const [inputs, setInputs] = useState({...userData});
 
     useEffect(() => {
         dispatch(getUserData(id));
-    }, [dispatch, id]);
-
-    const handleChange = (e) => {
+    }, []);
+    
+  console.log(inputs, '111');
+  const handleChange = (e) => {
+    console.log(e.target.files, '555');
+    console.log(inputs, '66');
         if (e.target.files) {
             setInputs((prev) => ({
                 ...prev,
                 [e.target.name]: e.target.value,
                 file: e.target.files[0],
             }));
+          console.log(inputs, '777');
         } else {
             setInputs((prev) => ({...prev, [e.target.name]: e.target.value}));
         }
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        dispatch(updateUser(inputs, id))
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputs, '000000');
+    dispatch(updateUser(inputs, id))
     }
+    //   const formData = new FormData();
+    //   formData.append('file', inputs.file ?? inputs.photo);
+    //   formData.append('userId', inputs.id);
+    //   formData.append('name', inputs.name);
+    //   formData.append('email', inputs.email);
+    //   fetch(`http://localhost:5001/api/userprofile/${id}`, {
+    //     method: 'PUT',
+    //     body: formData,
+    //   })
+    //     .then(res => { console.log(res); return res.json() })
+    //     .then(data => setUserData(data));
+    // }
+    // console.log(inputs, id);
 
     return (
         <ThemeProvider theme={theme}>
@@ -76,7 +94,7 @@ function UserProfile() {
                                 </div>
                             </div>
                         </div>
-                        <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 3}}>
+                        <Box component="form" noValidate sx={{mt: 3}}>
                             <Grid container spacing={2}>
                                 <Grid item xs={8}>
                                     <TextField
@@ -86,7 +104,7 @@ function UserProfile() {
                                         label="User Name"
                                         name="name"
                                         autoComplete="name"
-                                        onChange={(e) => setName(e.target.value)}
+                                         onChange={(e) => setInputs((prev) => ({...prev, name: e.target.value}))}
                                         value={inputs.name}
                                     />
                                 </Grid>
@@ -98,11 +116,11 @@ function UserProfile() {
                                         label="Email Address"
                                         name="email"
                                         autoComplete="email"
-                                        onChange={(e) => setEmail(e.target.value)}
+                                        onChange={(e) => setInputs((prev) => ({...prev, email: e.target.value}))}
                                         value={inputs.email}
                                     />
                                 </Grid>
-                                <Grid item xs={8}>
+                                {/* <Grid item xs={8}>
                                     <TextField
                                         required
                                         fullWidth
@@ -114,12 +132,13 @@ function UserProfile() {
                                         onChange={(e) => setPassword(e.target.value)}
                                         value={inputs.password}
                                     />
-                                </Grid>
+                                </Grid> */}
                             </Grid>
                             <Button
                                 type="submit"
                                 variant="contained"
-                                sx={{mt: 3, mb: 2}}
+                                sx={{ mt: 3, mb: 2 }}
+                                onClick={handleSubmit}
                             >
                                 Edit
                             </Button>

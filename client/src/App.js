@@ -37,7 +37,6 @@ function App() {
           <Routes>
               <Route path='/' element={<Home/>}/>
               <Route path='/auth' element={<Login/>}/>
-              <Route path='/userprofile' element={<UserProfile/>}/>
               <Route path='/registration' element={<Registration />} />
               <Route path='*' element={<Navigate to='/' replace/>}/>
           </Routes>

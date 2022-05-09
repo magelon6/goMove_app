@@ -3,6 +3,7 @@ const { body } = require('express-validator');
 const userController = require('../controller/user-controller');
 const authMiddleware = require('../middleware/auth.middleware');
 const apiData = require('../controller/api');
+const upload = require('../middleware/multer.middleware');
 
 router.post(
   '/registration',
@@ -20,8 +21,7 @@ router.get('/users', authMiddleware, userController.getUsers);
 router.get('/city', apiData.home);
 router.post('/price', apiData.price);
 router.get('/userprofile/:id', userController.getUserProfile);
-router.post('/userprofile/:id', userController.updateUserProfile);
-router.get('/currency', apiData.currency);
+router.patch('/userprofile/:id', upload.single('file'), userController.updateUserProfile);
 
 // router.post('/userprofile/:id/avatar', userController.updateUserAvatar);
 
