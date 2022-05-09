@@ -7,13 +7,13 @@ import StaticGraph from '../StaticGraph/StaticGraph'
 import Grid from "@mui/material/Grid";
 
 import Chart from '../Chart/Chart'
-import Chart2 from '../Chart2/Chart2'
 
 import backgroundImg from '../../images/background.jpg'
-import Chart3 from '../Chart3/Chart3'
 import Currency from "../Currency/Currency";
 import Header from "../Header/Header";
-import Chart4 from '../Chart4/Chart4'
+import Chart2 from "../Chart2/Chart2";
+import Chart3 from "../Chart3/Chart3";
+import Chart4 from "../Chart4/Chart4";
 
 const divStyle = {
     height: '100vh',
@@ -41,7 +41,7 @@ function Home() {
     return (
         <>
             <div style={divStyle}>
-                    <Header/>
+                <Header/>
                 <div className='input-wrapper' style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -75,11 +75,9 @@ function Home() {
                     <>
                         <Currency/>
                         <Chart/>
-                        
                         <Chart2/>
                         <Chart3/>
                         <Chart4/>
-
                     </>
                 }
             </div>
