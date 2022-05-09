@@ -91,17 +91,13 @@ class UserController {
   }
 
   async updateUserProfile(req, res, next) {
-    console.log('AAAAAAAAAAAA');
     try {
-      console.log(req, 'FILEEEE');
       const file = req.file.originalname;
       const userId = req.params.id;
-      console.log(userId);
       const { name, email } = req.body;
       // const user = await userService.updateUser(userId, name, email, file);
       const user = await User.update({ name, email, photo: file }, { where: { id: userId } });
       const one = await User.findByPk(Number(userId));
-      console.log(one);
       return res.json(one);
     } catch (err) {
       next(err);
