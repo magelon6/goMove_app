@@ -11,11 +11,10 @@ import Chart1 from '../SecondChart/SecondChart'
 
 import backgroundImg from '../../images/background.jpg'
 import Chart2 from '../thirdChart/thirdChart'
-import Currency from '../Currency/Currency'
+import Currency from "../Currency/Currency";
 
 const divStyle = {
     height: '100vh',
-    // maxHeight: '840px',
     position: 'relative',
     transition: 'height 99999s',
     backgroundImage: `url(${backgroundImg})`,
@@ -40,7 +39,6 @@ function Home() {
     return (
         <>
             <div style={divStyle}>
-                {/* <h1>Some text</h1> */}
                 <div className='input-wrapper' style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -69,16 +67,16 @@ function Home() {
                     </Grid>
                 </Grid>
 
-            {chart
-            &&
-            <>
-            <Currency/>
-            <Chart/>
-            <Chart1/>
-            <Chart2/>
-            </>
-            }
-        </div>
+                {chart
+                    &&
+                    <>
+                        <Currency/>
+                        <Chart/>
+                        <Chart1/>
+                        <Chart2/>
+                    </>
+                }
+            </div>
         </>
 
     )

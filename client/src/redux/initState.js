@@ -5,4 +5,8 @@ export const initState = {
     price2: [],
     currency: [],
     lineFrontCity: {},
+    currencyPrice: [],
+    currencyPrice2: [],
+
+
 }
