@@ -7,9 +7,7 @@ export const getUserData = (id) => async (dispatch) => {
 };
 
 export const updateUser = (inputs, id) => async (dispatch) => {
-  console.log(inputs.id, inputs.name, '222');
   const formData = new FormData();
-  console.log(formData, '=====================');
   formData.append('file', inputs.file ?? inputs.photo);
   formData.append('userId', inputs.id);
   formData.append('name', inputs.name);
