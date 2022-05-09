@@ -85,7 +85,6 @@ function InputCenter() {
                     <TextField
                         sx={{background: 'white', borderRadius: 5}}
                         {...params}
-                        label="City"
                         placeholder="Please type city"
                         variant="outlined"
 
@@ -104,7 +103,6 @@ function InputCenter() {
                     <TextField
                         sx={{background: 'white', borderRadius: 5}}
                         {...params}
-                        label="City"
                         placeholder="Please type city"
                         variant="outlined"
 
@@ -116,7 +114,7 @@ function InputCenter() {
             activateClass='active'
             to='section1'
             smooth={true}
-            delay={500}
+            delay={750}
             >
               <Button onClick={searchCity} variant="contained" sx={{background: '#FFB703', marginLeft: '20px'}}>
                   Find city

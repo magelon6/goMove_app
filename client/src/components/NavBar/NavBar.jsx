@@ -90,7 +90,6 @@ const NavBar = () => {
                             <Link to='/auth' style={{textDecoration: 'none'}}>
                                 <Button sx={{color: "white"}}>Sign In</Button>
                             </Link>
-                            <Currency/>
                         </>
 
 
