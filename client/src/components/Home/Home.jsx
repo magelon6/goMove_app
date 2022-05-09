@@ -46,7 +46,16 @@ function Home() {
                     textAlign: 'center',
                     width: '100%'
                 }}>
-                    <div style={{display: 'flex', justifyContent: 'center', marginTop: '25vh'}}>
+                    <div style={{
+                        marginTop: '5vh',
+                        color: 'white'
+                    }}>
+                        <h1>Compare Cities</h1>
+                        <br/>
+                        <h3>Here you can find informations including housing indicators,</h3>
+                        <h3>perceived crime rates, and quality of healthcare, and many other statistics.</h3>
+                    </div>
+                    <div style={{display: 'flex', justifyContent: 'center', marginTop: '10vh'}}>
                         <InputCenter/>
                     </div>
                 </div>
