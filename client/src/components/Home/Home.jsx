@@ -11,10 +11,11 @@ import Chart1 from '../SecondChart/SecondChart'
 
 import backgroundImg from '../../images/background.jpg'
 import Chart2 from '../thirdChart/thirdChart'
+import Currency from '../Currency/Currency'
 
 const divStyle = {
     height: '100vh',
-    maxHeight: '840px',
+    // maxHeight: '840px',
     position: 'relative',
     transition: 'height 99999s',
     backgroundImage: `url(${backgroundImg})`,
@@ -52,7 +53,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-            <div style={{margin: 30}}>
+            <div id='section1' style={{margin: 30}}>
                 <Grid container>
                     <Grid item xs={12} sm={6} md={3}>
                         <StaticGraph/>
@@ -68,19 +69,10 @@ function Home() {
                     </Grid>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={3}>
-                    <StaticGraph/>
-                </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                    <StaticGraph/>
-                </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                    <StaticGraph/>
-                </Grid>
-            </Grid>
             {chart
             &&
             <>
+            <Currency/>
             <Chart/>
             <Chart1/>
             <Chart2/>

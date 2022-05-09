@@ -1,27 +1,27 @@
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {Box, Button, Container, CssBaseline, Grid, TextField, Typography} from "@mui/material";
 import React, {useEffect, useState} from "react";
-import {useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import './UserProfile.css'
-import {getUserData, updateUser} from "../../redux/actions/profileAction";
+import { getUserData, updateUser } from "../../redux/thunk/thunkProfile";
 
 const theme = createTheme();
 
 function UserProfile() {
-    const id = useParams();
+    const id = useSelector(state => state.user.id);
     const dispatch = useDispatch();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    // const [name, setName] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
     const userData = useSelector((store) => store.user);
+    // const [userData, setUserData] = useState({});
     const [inputs, setInputs] = useState({...userData});
 
     useEffect(() => {
         dispatch(getUserData(id));
-    }, [dispatch, id]);
-
-    const handleChange = (e) => {
+    }, []);
+    
+  const handleChange = (e) => {
         if (e.target.files) {
             setInputs((prev) => ({
                 ...prev,
@@ -33,10 +33,23 @@ function UserProfile() {
         }
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        dispatch(updateUser(inputs, id))
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(updateUser(inputs, id))
     }
+    //   const formData = new FormData();
+    //   formData.append('file', inputs.file ?? inputs.photo);
+    //   formData.append('userId', inputs.id);
+    //   formData.append('name', inputs.name);
+    //   formData.append('email', inputs.email);
+    //   fetch(`http://localhost:5001/api/userprofile/${id}`, {
+    //     method: 'PUT',
+    //     body: formData,
+    //   })
+    //     .then(res => { console.log(res); return res.json() })
+    //     .then(data => setUserData(data));
+    // }
+    // console.log(inputs, id);
 
     return (
         <ThemeProvider theme={theme}>
@@ -51,7 +64,7 @@ function UserProfile() {
                     }}
                 >
                     <Typography component="h1" variant="h5">
-                        My Profile
+                       <h3>Personal account {inputs.name}</h3>
                     </Typography>
                     <div className='UserProfile__container'>
                         <div className="container col-md-4 mb-3 my-3">
@@ -61,10 +74,7 @@ function UserProfile() {
                                         src={inputs.photo ? `http://localhost:5001/img/${userData.photo}` :
                                             'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/b1/b12d371f6c55ed7306277b38b50f6642d13af030_full.jpg'}
                                         alt="profilephoto" className="rounded" width="350"/>
-                                    <div className="my-3">
-                                        <h4>
-                                            {inputs.name}
-                                        </h4>
+                                    <div className="my-3">                                    
                                         <input
                                             className="inputphoto input-file"
                                             id="file"
@@ -76,7 +86,7 @@ function UserProfile() {
                                 </div>
                             </div>
                         </div>
-                        <Box component="form" noValidate onSubmit={handleSubmit} sx={{mt: 3}}>
+                        <Box component="form" noValidate sx={{mt: 3}}>
                             <Grid container spacing={2}>
                                 <Grid item xs={8}>
                                     <TextField
@@ -86,7 +96,7 @@ function UserProfile() {
                                         label="User Name"
                                         name="name"
                                         autoComplete="name"
-                                        onChange={(e) => setName(e.target.value)}
+                                         onChange={(e) => setInputs((prev) => ({...prev, name: e.target.value}))}
                                         value={inputs.name}
                                     />
                                 </Grid>
@@ -98,28 +108,16 @@ function UserProfile() {
                                         label="Email Address"
                                         name="email"
                                         autoComplete="email"
-                                        onChange={(e) => setEmail(e.target.value)}
+                                        onChange={(e) => setInputs((prev) => ({...prev, email: e.target.value}))}
                                         value={inputs.email}
-                                    />
-                                </Grid>
-                                <Grid item xs={8}>
-                                    <TextField
-                                        required
-                                        fullWidth
-                                        name="password"
-                                        label="Password"
-                                        type="password"
-                                        id="password"
-                                        autoComplete="new-password"
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        value={inputs.password}
                                     />
                                 </Grid>
                             </Grid>
                             <Button
                                 type="submit"
                                 variant="contained"
-                                sx={{mt: 3, mb: 2}}
+                                sx={{ mt: 3, mb: 2 }}
+                                onClick={handleSubmit}
                             >
                                 Edit
                             </Button>

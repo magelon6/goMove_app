@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const path = require('path');
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -20,6 +21,7 @@ app.use(cookieParser());
 
 app.use('/api', router);
 app.use(errorMiddleware);
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Start server
 const start = async () => {
