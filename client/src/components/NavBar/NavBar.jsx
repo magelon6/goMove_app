@@ -4,6 +4,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import logoSvg from '../../images/logo_transparent.png'
+import Currency from '../Currency/Currency';
+import {THUNK_ACTION_LOGOUT} from "../../redux/thunk/thunkAuth";
+
 
 const StyledToolbar = styled(Toolbar)({
     display:"flex",
@@ -60,39 +63,47 @@ const NavBar = () => {
                 </form> */}
                 <Icons>
                     {/* Тут прописать условие авторизации пользователя */}
-                    {user? 
-                    <>
-                    <Avatar sx={{width:35, height:35}} src={user.photo}/>
-                        <MenuIcon onClick={(e) => setOpen(true)} />
-                        <Menu
-                            id="demo-positioned-menu"
-                            aria-labelledby="demo-positioned-button"
-                            open={open}
-                            onClose={(e) => setOpen(false)}
-                            anchorOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                            }}
-                            transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                            }}
-                        >
-                            <MenuItem >Profile</MenuItem>
-                            <MenuItem >My account</MenuItem>
-                            <MenuItem >Logout</MenuItem>
-                        </Menu>
-                    </>
-                         : 
-                         <>
-                         <Link to='/registration' style={{ textDecoration: 'none' }}>
-                            <Button variant="outlined" sx={{color: 'white', backgroundColor: '#FFB703'}}>Sign Up</Button>
+                    {user ?
+                        <>
+                            <Avatar sx={{width: 35, height: 35}} src='#'/>
+                            <MenuIcon onClick={(e) => setOpen(true)}/>
+                            <Menu
+                                id="demo-positioned-menu"
+                                aria-labelledby="demo-positioned-button"
+                                open={open}
+                                onClose={(e) => setOpen(false)}
+                                anchorOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'right',
+                                }}
+                            >
+                                <MenuItem>
+                                    <Link to='/userprofile'>Profile</Link>
+                                </MenuItem>
+                                <MenuItem>My account</MenuItem>
+                                <MenuItem
+                                    onClick={() => (dispatch(THUNK_ACTION_LOGOUT()))}
+                                >Logout</MenuItem>
+                            </Menu>
+                        </>
+                        :
+                        <>
+                            <Link to='/registration' style={{textDecoration: 'none'}}>
+                                <Button variant="outlined" sx={{color: 'white', backgroundColor: '#FFB703'}}>Sign
+                                    Up</Button>
+
                             </Link>
-                            <Link to='/auth' style={{ textDecoration: 'none' }}>
-                            <Button sx={{color: "white"}}>Sign In</Button>
-                        </Link>
-                         </>
-                         
+                            <Link to='/auth' style={{textDecoration: 'none'}}>
+                                <Button sx={{color: "white"}}>Sign In</Button>
+                            </Link>
+                            <Currency/>
+                        </>
+
+
                     }
                     {/* <Link to='/registration' style={{ textDecoration: 'none' }}>
                       <Button variant="outlined" sx={{color: 'white', backgroundColor: '#FFB703'}}>Sign Up</Button>
