@@ -40,6 +40,7 @@ function Home() {
     return (
         <>
             <div style={divStyle}>
+                    <Header/>
                 <div className='input-wrapper' style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -47,8 +48,7 @@ function Home() {
                     textAlign: 'center',
                     width: '100%'
                 }}>
-                    <Header/>
-                    <div style={{display: 'flex', justifyContent: 'center', marginTop: '25vh'}}>
+                    <div style={{display: 'flex', justifyContent: 'center', marginTop: '30vh'}}>
                         <InputCenter/>
                     </div>
                 </div>
