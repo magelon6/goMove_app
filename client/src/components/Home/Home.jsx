@@ -11,7 +11,7 @@ import Chart1 from '../SecondChart/SecondChart'
 
 import backgroundImg from '../../images/background.jpg'
 import Chart2 from '../thirdChart/thirdChart'
-import Currency from '../Currency/Currency'
+import Currency from "../Currency/Currency";
 
 const divStyle = {
     height: '100vh',
@@ -69,16 +69,16 @@ function Home() {
                     </Grid>
                 </Grid>
 
-            {chart
-            &&
-            <>
-            <Currency/>
-            <Chart/>
-            <Chart1/>
-            <Chart2/>
-            </>
-            }
-        </div>
+                {chart
+                    &&
+                    <>
+                        <Currency/>
+                        <Chart/>
+                        <Chart1/>
+                        <Chart2/>
+                    </>
+                }
+            </div>
         </>
 
     )
