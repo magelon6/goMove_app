@@ -7,15 +7,16 @@ import StaticGraph from '../StaticGraph/StaticGraph'
 import Grid from "@mui/material/Grid";
 
 import Chart from '../Chart/Chart'
-import Chart1 from '../SecondChart/SecondChart'
 
 import backgroundImg from '../../images/background.jpg'
-import Chart2 from '../thirdChart/thirdChart'
-import Currency from '../Currency/Currency'
+import Currency from "../Currency/Currency";
+import Header from "../Header/Header";
+import Chart2 from "../Chart2/Chart2";
+import Chart3 from "../Chart3/Chart3";
+import Chart4 from "../Chart4/Chart4";
 
 const divStyle = {
     height: '100vh',
-    // maxHeight: '840px',
     position: 'relative',
     transition: 'height 99999s',
     backgroundImage: `url(${backgroundImg})`,
@@ -40,7 +41,7 @@ function Home() {
     return (
         <>
             <div style={divStyle}>
-                {/* <h1>Some text</h1> */}
+                <Header/>
                 <div className='input-wrapper' style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -48,7 +49,7 @@ function Home() {
                     textAlign: 'center',
                     width: '100%'
                 }}>
-                    <div style={{display: 'flex', justifyContent: 'center', marginTop: '25vh'}}>
+                    <div style={{display: 'flex', justifyContent: 'center', marginTop: '30vh'}}>
                         <InputCenter/>
                     </div>
                 </div>
@@ -69,16 +70,17 @@ function Home() {
                     </Grid>
                 </Grid>
 
-            {chart
-            &&
-            <>
-            <Currency/>
-            <Chart/>
-            <Chart1/>
-            <Chart2/>
-            </>
-            }
-        </div>
+                {chart
+                    &&
+                    <>
+                        <Currency/>
+                        <Chart/>
+                        <Chart2/>
+                        <Chart3/>
+                        <Chart4/>
+                    </>
+                }
+            </div>
         </>
 
     )

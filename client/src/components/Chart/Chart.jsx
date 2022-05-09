@@ -1,13 +1,15 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
-import { Chart as ChartJS } from 'chart.js/auto'
+// import { Chart as ChartJS } from 'chart.js/auto'
 import { useSelector } from "react-redux";
 
 const Chart = () => {
-  const price = useSelector((state => state.price))
-  const price2 = useSelector((state => state.price2))
+  const price = useSelector((state => state.currencyPrice))
+  const price2 = useSelector((state => state.currencyPrice2))
   const city1 = useSelector((state) => state.lineFrontCity)
   const city2 = useSelector((state) => state.lineFrontCity)
+  const setCurrency = useSelector((state) => state.currentCurrency)
+  
 
 
   const barChartData = {
@@ -40,12 +42,10 @@ const Chart = () => {
         plugins: {
             title: {
                 display: true,
-                text: ' Restaurants prices, $ ',
+                text: ` Restaurants prices, ${setCurrency} `,
                 font: {
                   size:20
-                }
-
-               
+                } 
             }
         }
     }}
@@ -54,7 +54,6 @@ const Chart = () => {
     />
   );
   return barChart;
-  // return <></>;
 };
 
 
