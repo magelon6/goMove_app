@@ -12,7 +12,6 @@ import {THUNK_checkAuth} from "./redux/thunk/thunkAuth";
 function App() {
     const isUser = useSelector(state => state.user)
     const dispatch = useDispatch();
-    console.log(isUser, "isUser")
 
     useEffect(() => {
         (localStorage.getItem('token') !== false) && dispatch(THUNK_checkAuth())
