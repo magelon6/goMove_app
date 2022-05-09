@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import logoSvg from '../../images/logo_transparent.png'
 import Currency from '../Currency/Currency';
 import {THUNK_ACTION_LOGOUT} from "../../redux/thunk/thunkAuth";
-
+import { getUserData } from '../../redux/thunk/thunkProfile';
 
 const StyledToolbar = styled(Toolbar)({
     display: "flex",
@@ -73,9 +73,8 @@ const NavBar = () => {
                                 }}
                             >
                                 <MenuItem>
-                                    <Link to='/userprofile'>Profile</Link>
+                                    <Link to='/userprofile' style={{ textDecoration: 'none' }}>Profile</Link>
                                 </MenuItem>
-                                <MenuItem>My account</MenuItem>
                                 <MenuItem
                                     onClick={() => (dispatch(THUNK_ACTION_LOGOUT()))}
                                 >Logout</MenuItem>
