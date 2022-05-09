@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {getPriceFromDB, getPriceFromDB2} from '../../redux/thunk/thunkPrice'
 import {getlineFrontCity} from "../../redux/actions/lineFrontCityAction";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 
 
@@ -111,9 +112,16 @@ function InputCenter() {
                 onChange={(e) => setData2(e.target.innerText)}
 
             />
-            <Button onClick={searchCity} variant="contained" sx={{background: '#FFB703', marginLeft: '20px'}}>
-                Find city
-            </Button>
+            <Link
+            activateClass='active'
+            to='section1'
+            smooth={true}
+            delay={500}
+            >
+              <Button onClick={searchCity} variant="contained" sx={{background: '#FFB703', marginLeft: '20px'}}>
+                  Find city
+              </Button>
+            </Link>
 
 
             {/* {chart
