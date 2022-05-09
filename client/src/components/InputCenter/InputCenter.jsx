@@ -77,7 +77,7 @@ function InputCenter() {
             <Autocomplete
                 filterOptions={filterOptions}
                 selectOnFocus={true}
-                id="select-on-focus"
+                id="select-on-focus-1"
                 options={city}
                 sx={{width: 400, marginRight: 5}}
                 isOptionEqualToValue={(option, value) => option.id === value.id}
@@ -95,7 +95,7 @@ function InputCenter() {
             <Autocomplete
                 filterOptions={filterOptions}
                 selectOnFocus={true}
-                id="select-on-focus"
+                id="select-on-focus-2"
                 options={city}
                 sx={{width: 400, marginRight: 5}}
                 isOptionEqualToValue={(option, value) => option.id === value.id}
