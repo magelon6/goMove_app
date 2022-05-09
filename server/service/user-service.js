@@ -36,7 +36,9 @@ class UserService {
         const user = await User.findOne({where: {activationLink}});
         const userFront = {
             id: user.id,
+            name: user.name,
             email: user.email,
+            photo: user.photo,
             isActivated: user.isActivated,
         };
         if (!user) {
@@ -69,6 +71,7 @@ class UserService {
             id: user.id,
             name: user.name,
             email: user.email,
+            photo: user.photo,
             isActivated: user.isActivated,
         };
         const tokens = await tokenService.generateTokens({...userFront});

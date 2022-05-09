@@ -24,6 +24,7 @@ const Icons = styled(Box)(({ theme }) => ({
 
 const NavBar = () => {
     const user = useSelector(state=> state.user)
+    console.log('user', user);
     const [open, setOpen] = useState(false)
     const [findCity, setFindCity] = useState("")
     const [copy, setCopy] = useState([])
@@ -61,7 +62,7 @@ const NavBar = () => {
                     {/* Тут прописать условие авторизации пользователя */}
                     {user? 
                     <>
-                    <Avatar sx={{width:35, height:35}} src='#'/>
+                    <Avatar sx={{width:35, height:35}} src={user.photo}/>
                         <MenuIcon onClick={(e) => setOpen(true)} />
                         <Menu
                             id="demo-positioned-menu"
