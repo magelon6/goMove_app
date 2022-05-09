@@ -17,7 +17,6 @@ function InputCenter() {
 
     const dispatch = useDispatch()
 
-    // const slice = city.map(el => ({id: el.id, label: `${el.city}, ${el.country}`}))
 
 
 
@@ -120,16 +119,6 @@ function InputCenter() {
                   Find city
               </Button>
             </Link>
-
-
-            {/* {chart
-
-            &&
-            <>
-            <Chart/>
-            <Chart1/>
-            </>
-            } */}
         </>
     )
 }
