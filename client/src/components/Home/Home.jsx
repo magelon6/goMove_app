@@ -14,7 +14,7 @@ import Chart2 from '../thirdChart/thirdChart'
 
 const divStyle = {
     height: '100vh',
-    maxHeight: '840px',
+    // maxHeight: '840px',
     position: 'relative',
     transition: 'height 99999s',
     backgroundImage: `url(${backgroundImg})`,
