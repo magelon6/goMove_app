@@ -74,7 +74,8 @@ function Home() {
                 {chart
                     &&
                     <>
-                        <div style={{display: 'flex', margin: 100}}>
+                        <div style={{display: 'flex', margin: 100, justifyContent: 'space-between'}}>
+                            
                             <Currency/>
                         </div>
                         <Chart/>
