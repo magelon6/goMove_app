@@ -35,7 +35,6 @@ function UserProfile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(inputs, '000000');
     dispatch(updateUser(inputs, id))
     }
     //   const formData = new FormData();

@@ -7,14 +7,17 @@ import StaticGraph from '../StaticGraph/StaticGraph'
 import Grid from "@mui/material/Grid";
 
 import Chart from '../Chart/Chart'
-import Chart1 from '../SecondChart/SecondChart'
 
 import backgroundImg from '../../images/background.jpg'
-import Chart2 from '../thirdChart/thirdChart'
+import Currency from "../Currency/Currency";
+import Header from "../Header/Header";
+import Chart2 from "../Chart2/Chart2";
+import Chart3 from "../Chart3/Chart3";
+import Chart4 from "../Chart4/Chart4";
+import Footer from '../Footer/Footer'
 
 const divStyle = {
     height: '100vh',
-    // maxHeight: '840px',
     position: 'relative',
     transition: 'height 99999s',
     backgroundImage: `url(${backgroundImg})`,
@@ -39,7 +42,7 @@ function Home() {
     return (
         <>
             <div style={divStyle}>
-                {/* <h1>Some text</h1> */}
+                <Header/>
                 <div className='input-wrapper' style={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -47,12 +50,12 @@ function Home() {
                     textAlign: 'center',
                     width: '100%'
                 }}>
-                    <div style={{display: 'flex', justifyContent: 'center', marginTop: '25vh'}}>
+                    <div style={{display: 'flex', justifyContent: 'center', marginTop: '30vh'}}>
                         <InputCenter/>
                     </div>
                 </div>
             </div>
-            <div style={{margin: 30}}>
+            <div id='section1' style={{margin: 30}}>
                 <Grid container>
                     <Grid item xs={12} sm={6} md={3}>
                         <StaticGraph/>
@@ -68,25 +71,23 @@ function Home() {
                     </Grid>
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={3}>
-                    <StaticGraph/>
-                </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                    <StaticGraph/>
-                </Grid>
-                <Grid item xs={12} sm={6} md={3}>
-                    <StaticGraph/>
-                </Grid>
-            {/* </Grid> */}
-            {chart
-            &&
-            <>
-            <Chart/>
-            <Chart1/>
-            <Chart2/>
-            </>
-            }
-        </div>
+                {chart
+                    &&
+                    <>
+                        <div style={{display: 'flex', width: '100%', justifyContent: 'center'}}>
+                        <div style={{display: 'flex', justifyContent: 'center', margin: 40, width: '20vw' }}>
+                            <div style={{display: 'flex', justifyContent: 'center', marginTop: 17}}>Currency:</div>
+                            <Currency/>
+                        </div>
+                        </div>
+                        <Chart/>
+                        <Chart2/>
+                        <Chart3/>
+                        <Chart4/>
+                    </>
+                }
+            </div>
+            <Footer />
         </>
 
     )
