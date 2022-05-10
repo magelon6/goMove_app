@@ -14,6 +14,8 @@ import Header from "../Header/Header";
 import Chart2 from "../Chart2/Chart2";
 import Chart3 from "../Chart3/Chart3";
 import Chart4 from "../Chart4/Chart4";
+import Chart5 from '../Chart5/Chart5'
+import Chart6 from '../Chart6/Chart6'
 
 const divStyle = {
     height: '100vh',
@@ -78,6 +80,8 @@ function Home() {
                         <Chart2/>
                         <Chart3/>
                         <Chart4/>
+                        <Chart5/>
+                        <Chart6/>
                     </>
                 }
             </div>
