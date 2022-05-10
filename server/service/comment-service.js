@@ -19,6 +19,27 @@ class CommentService {
         return newComment;
     }
 
+    async getComments(postId) {
+        const post = await Post.findByPk({where: {id: postId}});
+        if (!post) {
+            throw new ApiError('Post not found', 404);
+
+        }
+        const comments = await Comment.findAll({
+                where: {post: post.id},
+            }
+        );
+        return comments;
+    }
+
+    async deleteComment(commentId) {
+        const comment = await Comment.findByPk(commentId);
+        if (!comment) {
+            throw new ApiError('Comment not found', 404);
+        }
+        await comment.destroy();
+    }
+
 }
 
 module.exports = new CommentService();

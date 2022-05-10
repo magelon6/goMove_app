@@ -11,13 +11,15 @@ class BlogController {
                 {
                     id: 1,
                     title: 'Post 1',
-                    content: 'Content 1',
+                    body: 'Content 1',
+                    imagePost: 'https://picsum.photos/200/300',
 
                 },
                 {
                     id: 2,
                     title: 'Post 2',
-                    content: 'Content 2',
+                    body: 'Content 2',
+                    imagePost: 'https://picsum.photos/200/300',
 
                 }
             ]
