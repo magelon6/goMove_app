@@ -24,6 +24,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardMedia } from '@mui/material';
+import Chart4 from '../Chart4/Chart4';
 
 const bull = (
   <Box
@@ -36,12 +37,8 @@ const bull = (
 
 const card = (
   <React.Fragment>
-    <CardMedia 
-      component="img"
-      height="200"
-      image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5J3EahE8jJAwqtwbmlrPCK3QTSdHrWU4WTg&usqp=CAU"
-    />
     <CardContent>
+    <Chart4/>
       <Typography variant="h5" component="div">
         Name of Graph
       </Typography>

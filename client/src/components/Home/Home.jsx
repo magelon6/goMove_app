@@ -14,6 +14,7 @@ import Header from "../Header/Header";
 import Chart2 from "../Chart2/Chart2";
 import Chart3 from "../Chart3/Chart3";
 import Chart4 from "../Chart4/Chart4";
+import Footer from '../Footer/Footer'
 
 const divStyle = {
     height: '100vh',
@@ -73,7 +74,9 @@ function Home() {
                 {chart
                     &&
                     <>
-                        <Currency/>
+                        <div style={{display: 'flex', margin: 100}}>
+                            <Currency/>
+                        </div>
                         <Chart/>
                         <Chart2/>
                         <Chart3/>
@@ -81,6 +84,7 @@ function Home() {
                     </>
                 }
             </div>
+            <Footer />
         </>
 
     )
