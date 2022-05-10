@@ -4,18 +4,20 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import './UserProfile.css'
 import { getUserData, updateUser } from "../../redux/thunk/thunkProfile";
+import { getHistoryFromDB } from "../../redux/thunk/thunkHistory";
 
 const theme = createTheme();
 
 function UserProfile() {
+    const favorite = useSelector(state => state.history)
     const id = useSelector(state => state.user.id);
-    const city = useSelector(state => state.lineFrontCity);
     const dispatch = useDispatch();
     const userData = useSelector((store) => store.user);
     const [inputs, setInputs] = useState({ ...userData });
  
     useEffect(() => {
-        dispatch(getUserData(id));
+      dispatch(getUserData(id));
+      dispatch(getHistoryFromDB())
     }, []);
     
   const handleChange = (e) => {
@@ -109,7 +111,7 @@ function UserProfile() {
                 </Box>
         </Container>
         <>
-          {Object.values(city).map((el) => <div>{el}</div>)}
+          {favorite.filter((el) => el.userId === id).map((el) => <div>{el.cityBegin} - {el.cityEnd}</div>)}
         </>
         </ThemeProvider>
     );

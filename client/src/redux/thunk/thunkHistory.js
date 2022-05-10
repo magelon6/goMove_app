@@ -6,7 +6,8 @@ export const getHistoryFromDB = () => async (dispatch) => {
   dispatch(ACTION_GET_HISTORY(response.data))
 }
 
-export const addHistoryFromDB = ({ cityBegin, cityEnd }) => async (dispatch) => {
-  const response = await axios.post('http://localhost:5001/api/history', {cityBegin, cityEnd})
+export const addHistoryFromDB = (cityBegin, cityEnd, userId) => async (dispatch) => {
+  console.log(cityBegin, cityEnd, userId, '________');
+  const response = await axios.post('http://localhost:5001/api/history', {cityBegin, cityEnd, userId})
   dispatch(ACTION_ADD_HISTORY(response.data))
 }
