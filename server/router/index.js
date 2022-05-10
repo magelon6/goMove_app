@@ -31,7 +31,6 @@ router.get('/currency', apiData.currency);
 router.get('/userprofile/:id', userController.getUserProfile);
 router.patch('/userprofile/:id', upload.single('file'), userController.updateUserProfile);
 
-
 //blog routes
 router.get('/blog', blogController.getAllPosts);
 router.get('/blog/:id', blogController.getPostById);

@@ -12,8 +12,8 @@ function UserProfile() {
     const city = useSelector(state => state.lineFrontCity);
     const dispatch = useDispatch();
     const userData = useSelector((store) => store.user);
-    const [inputs, setInputs] = useState({...userData});
-
+    const [inputs, setInputs] = useState({ ...userData });
+ 
     useEffect(() => {
         dispatch(getUserData(id));
     }, []);
