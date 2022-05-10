@@ -39,7 +39,7 @@ const card = (
   <React.Fragment>
     <CardContent>
     <Chart4/>
-      <Typography variant="h5" component="div">
+      <Typography variant="h8" component="div">
         Name of Graph
       </Typography>
     </CardContent>
