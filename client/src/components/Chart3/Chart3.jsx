@@ -21,15 +21,21 @@ const Chart3 = () => {
         data: price.slice(16,23).map((el) => el.price),
         label: city1.city1,
         borderColor: "#3333ff",
-        backgroundColor: "rgba(0, 0, 255, 0.5)",
-        fill: true
+        backgroundColor: "rgba(255, 183, 3, 0.5)",
+        fill: true,
+        borderWidth: 2,
+        borderRadius: Number.MAX_VALUE,
+        borderSkipped: false,
       },
       {
         data: price2.slice(16,23).map((el) => el.price),
         label: city2.city2,
         borderColor: "#ff3333",
-        backgroundColor: "rgba(255, 0, 0, 0.5)",
-        fill: true
+        backgroundColor: "rgba(33, 158, 188, 0.5)",
+        fill: true,
+        borderWidth: 2,
+        borderRadius: Number.MAX_VALUE,
+        borderSkipped: false,
       }
     ]
   };
@@ -39,19 +45,21 @@ const Chart3 = () => {
       // type="bar"
       width={130}
       height={50}
-      options= {{
-        plugins: {
+      options= {
+        {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
             title: {
-                display: true,
-                text: ` Transportation prices, ${setCurrency} `,
-                font: {
-                  size:20
-                }
-
-               
+              display: true,
+              text: 'Chart.js Bar Chart'
             }
+          }
         }
-    }}
+    }
+  
       data={barChartData}
     />
   );

@@ -100,15 +100,7 @@ const NavBar = () => {
 
 
                     }
-                    {/* <Link to='/registration' style={{ textDecoration: 'none' }}>
-                      <Button variant="outlined" sx={{color: 'white', backgroundColor: '#FFB703'}}>Sign Up</Button>
-                    </Link>
-                    <Link to='/auth' style={{ textDecoration: 'none' }}>
-                      <Button sx={{color: "white"}}>Sign In</Button>
-
-                  </Link>
-                    <Avatar sx={{width:35, height:35}} src='#'/>
-                    <MenuIcon onClick={(e) => setOpen(true)} /> */}
+                  
                 </Icons>
             </StyledToolbar>
         </AppBar>

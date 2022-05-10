@@ -26,7 +26,7 @@ const divStyle = {
 
 function Home() {
     const price = useSelector((state) => state.price)
-    const price2 = useSelector((state) => state.price2)
+
     const [chart, setChart] = useState(price)
 
     const dispatch = useDispatch()
