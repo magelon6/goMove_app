@@ -62,8 +62,7 @@ const Chart4 = () => {
             }
           }
         }
-  }
-
+      }
       data={barChartData}
     />
   );
