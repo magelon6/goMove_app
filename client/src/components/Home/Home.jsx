@@ -16,6 +16,8 @@ import Chart3 from "../Chart3/Chart3";
 import Chart4 from "../Chart4/Chart4";
 import Chart5 from '../Chart5/Chart5'
 import Chart6 from '../Chart6/Chart6'
+import Footer from '../Footer/Footer'
+import BlogList from "../Blog/BlogList";
 
 const divStyle = {
     height: '100vh',
@@ -58,17 +60,20 @@ function Home() {
             </div>
             <div id='section1' style={{margin: 30}}>
                 <Grid container>
-                    <Grid item xs={12} sm={6} md={3}>
-                        <StaticGraph/>
+                    <Grid item xs={12} sm={6} md={4}>
+                        <div style={{marginRight: '10px'}}>
+                            <StaticGraph/>
+                        </div>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                        <StaticGraph/>
+                    <Grid item xs={12} sm={6} md={4}>
+                        <div style={{marginRight: '10px'}}>
+                            <StaticGraph/>
+                        </div>
                     </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                        <StaticGraph/>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={3}>
-                        <StaticGraph/>
+                    <Grid item xs={12} sm={6} md={4}>
+                        <div style={{marginRight: '10px'}}>
+                            <StaticGraph/>
+                        </div>
                     </Grid>
                 </Grid>
 
@@ -82,9 +87,31 @@ function Home() {
                         <Chart4/>
                         <Chart5/>
                         <Chart6/>
+                        <div style={{display: 'flex', width: '100%', justifyContent: 'center'}}>
+                            <div style={{display: 'flex', justifyContent: 'center', margin: 40, width: '20vw'}}>
+                                <div style={{display: 'flex', justifyContent: 'center', marginTop: 17}}>Currency:</div>
+                                <Currency/>
+                            </div>
+                        </div>
+                        <div style={{width: '90%'}}>
+                            <div style={{marginTop: '10vh'}}>
+                                <Chart/>
+                            </div>
+                            <div style={{marginTop: '10vh'}}>
+                                <Chart2/>
+                            </div>
+                            <div style={{marginTop: '10vh'}}>
+                                <Chart3/>
+                            </div>
+                            <div style={{marginTop: '10vh'}}>
+                                <Chart4/>
+                            </div>
+                        </div>
                     </>
                 }
             </div>
+            <BlogList/>
+            <Footer/>
         </>
 
     )
